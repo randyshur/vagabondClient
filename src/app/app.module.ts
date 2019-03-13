@@ -15,6 +15,9 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { CreatestateComponent } from './state/createstate/createstate.component';
+import { EditstateComponent } from './state/editstate/editstate.component';
+import { StateComponent } from './state/state.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { SigninComponent } from './auth/signin/signin.component';
     AdminComponent,
     AuthComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    CreatestateComponent,
+    EditstateComponent,
+    StateComponent
   ],
   imports: [
     BrowserModule,
