@@ -20,7 +20,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDisplayComponent } from './home/home-display/home-display.component';
-
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
 
 import { AdminComponent } from './admin/admin.component';
@@ -32,7 +31,8 @@ import { StateComponent, StateComponentUpdate } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 
-import { MatGridListModule } from '@angular/material/grid-list';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
 
@@ -43,19 +43,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HomeDisplayComponent,
 
     AdminComponent,
-
     SignUpComponent,
     SignInComponent,
     UserComponent,
-
-    LandmarkDisplayComponent,
     LandmarkEditComponent,
     LandmarkCreateComponent,
 
     StateComponent,
-    StateComponentUpdate,
-
-
+    StateComponentUpdate
   ],
   imports: [
     BrowserModule,
@@ -67,7 +62,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
     RouterModule,
     HttpClientModule,
     MatGridListModule,
-
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -78,8 +72,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatNativeDateModule
   ],
   entryComponents: [
-    StateComponent,
-    StateComponentUpdate,
+   StateComponent,
+   StateComponentUpdate
   ],
   providers: [EndpointsService],
   bootstrap: [AppComponent]

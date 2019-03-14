@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 import { User } from '../models/user'
 
@@ -30,8 +32,10 @@ export class EndpointsService {
 
   //update user by id
 
+
   updateUser(id){
     // return this.http.put(`${baseUrl}api/user/${id}`)
+
   }
 
   // updateUser(id){
@@ -40,8 +44,10 @@ export class EndpointsService {
 
 
   //delete user by id
+
   deleteUser(id){
     return this.http.delete(`${baseUrl}api/user/${id}`);
+
   }
 
   ////////STATES///////////////
@@ -83,8 +89,10 @@ export class EndpointsService {
 
 
   //delete state by id
+
   deleteState(id){
     return this.http.delete(`${baseUrl}api/state/${id}`)
+
   }
 
   /////////LANDMARKS///////////////
@@ -100,8 +108,10 @@ export class EndpointsService {
 
 
   //create single landmark
+
   createLandmark(){
     // return this.http.post(`${baseUrl}api/landmark/`)
+
   }
 
   // //create single landmark
@@ -111,14 +121,18 @@ export class EndpointsService {
 
 
   //get single landmark by id for updating
+
   getUserLandmark(id){
     return this.http.get(`${baseUrl}api/landmark/id/${id}`)
+
   }
 
 
   //update landmark by id
+
   updateLandmark(id){
     // return this.http.put(`${baseUrl}api/landmark/${id}`)
+
   }
 
   // //update landmark by id
@@ -128,8 +142,10 @@ export class EndpointsService {
 
 
   //delete landmark by id
+
   deleteLandmark(id){
     return this.http.delete(`${baseUrl}api/landmark/${id}`)
+
   }
 
 
