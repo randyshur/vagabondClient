@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointsService } from '../services/endpoints.service';
 import { HttpClientModule} from '@angular/common/http';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-landmark-display',
@@ -13,7 +14,7 @@ export class LandmarkDisplayComponent implements OnInit {
   userLandmark: any
   userId: number
 
-  constructor(private endpointsservice: EndpointsService, private http:HttpClientModule) { }
+  constructor(private endpointsservice: EndpointsService, private http:HttpClientModule, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -42,5 +43,13 @@ export class LandmarkDisplayComponent implements OnInit {
     this.endpointsservice.deleteLandmark(id).subscribe(data => {
       console.log('deleted');
     })
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
