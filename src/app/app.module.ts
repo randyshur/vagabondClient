@@ -23,18 +23,18 @@ import { HomeComponent } from './home/home.component';
 import { HomeDisplayComponent } from './home/home-display/home-display.component';
 
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
+
+
 import { AdminComponent } from './admin/admin.component';
-import { AuthComponent } from './auth/auth.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { StateComponent } from './state/state.component';
-import { StateComponentUpdate } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 
 
+
+import { StateComponentUpdate } from './state/state.component';
 
 
 @NgModule({
@@ -46,9 +46,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     HomeDisplayComponent,
     LandmarkDisplayComponent,
     AdminComponent,
-    AuthComponent,
-    SignupComponent,
-    SigninComponent,
     StateComponent,
     LandmarkEditComponent,
     LandmarkCreateComponent,
@@ -61,6 +58,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     RouterModule,
     HttpClientModule,
     MatGridListModule,
