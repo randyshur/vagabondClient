@@ -3,10 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const baseUrl='http://localhost:4050/'
 
-// const httpOptions = new HttpHeaders()
-//               .set('authorization', this.authToken)
-//               .set('Content-Type', 'application/json'); 
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -22,9 +18,15 @@ export class EndpointsService {
 
   //////USERS/////////////
   //update user by id
+
   updateUser(id){
     // return this.http.put(`${baseUrl}api/user/${id}`)
   }
+
+  // updateUser(id){
+  //   this.http.put(`${baseUrl}api/user/${id}`)
+  // }
+
 
   //delete user by id
   deleteUser(id){
@@ -33,9 +35,15 @@ export class EndpointsService {
 
   ////////STATES///////////////
   //create state
+
   createState(){
     // return this.http.post(`${baseUrl}api/state/`)
   }
+
+  // createState(){
+  //   this.http.post(`${baseUrl}api/state/`)
+  // }
+
 
   //get all states
   getAllStates(){
@@ -53,9 +61,15 @@ export class EndpointsService {
   }
   
   //update state by id
+
   updateState(id){
     // return this.http.put(`${baseUrl}api/state/${id}`)
   }
+
+  // updateState(id){
+  //   this.http.put(`${baseUrl}api/state/${id}`)
+  // }
+
 
   //delete state by id
   deleteState(id){
@@ -73,20 +87,34 @@ export class EndpointsService {
     return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
   }
 
+
   //create single landmark
   createLandmark(){
     // return this.http.post(`${baseUrl}api/landmark/`)
   }
+
+  // //create single landmark
+  // createLandmark(){
+  //   this.http.post(`${baseUrl}api/landmark/`)
+  // }
+
 
   //get single landmark by id for updating
   getUserLandmark(id){
     return this.http.get(`${baseUrl}api/landmark/id/${id}`)
   }
 
+
   //update landmark by id
   updateLandmark(id){
     // return this.http.put(`${baseUrl}api/landmark/${id}`)
   }
+
+  // //update landmark by id
+  // updateLandmark(id){
+  //   this.http.put(`${baseUrl}api/landmark/${id}`)
+  // }
+
 
   //delete landmark by id
   deleteLandmark(id){
