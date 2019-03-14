@@ -40,11 +40,10 @@ export class EndpointsService {
     // return this.http.post(`${baseUrl}api/state/`)
   }
 
-  // createState(){
-  //   this.http.post(`${baseUrl}api/state/`)
-  // }
-
-
+  getUserStates(userId){
+    return this.http.get(`${baseUrl}api/state/${userId}`)
+  }
+  
   //get all states
   getAllStates(){
     return this.http.get(`${baseUrl}api/state/`)
