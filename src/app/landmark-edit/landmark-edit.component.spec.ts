@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatestateComponent } from './createstate.component';
+import { LandmarkEditComponent } from './landmark-edit.component';
 
-describe('CreatestateComponent', () => {
-  let component: CreatestateComponent;
-  let fixture: ComponentFixture<CreatestateComponent>;
+describe('LandmarkEditComponent', () => {
+  let component: LandmarkEditComponent;
+  let fixture: ComponentFixture<LandmarkEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreatestateComponent ]
+      declarations: [ LandmarkEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreatestateComponent);
+    fixture = TestBed.createComponent(LandmarkEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

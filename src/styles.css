@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
+
+.titleFont{
+    font-family: 'dolce_vitaquite_regular';
+}
+
+.bodyFont{
+    font-family: 'Barlow Condensed', sans-serif;
+
+}
+
+@font-face {
+    font-family: 'dolce_vitaquite_regular';
+    src: url('./assets/dolce_vita-webfont.woff2') format('woff2'),
+         url('./assets/dolce_vita-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'dolce_vita_heavyafewXpounds';
+    src: url('./assets/dolce_vita-webfont.woff2') format('woff2'),
+         url('./assets/dolce_vita-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'dolce_vita_lightsuper_light';
+    src: url('./assets/dolce_vita-webfont.woff2') format('woff2'),
+         url('./assets/dolce_vita-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
