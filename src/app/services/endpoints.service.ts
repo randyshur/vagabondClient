@@ -12,9 +12,9 @@ export class EndpointsService {
 
   //////USERS/////////////
   //update user by id
-  updateUser(id){
-    this.http.put(`${baseUrl}api/user/${id}`)
-  }
+  // updateUser(id){
+  //   this.http.put(`${baseUrl}api/user/${id}`)
+  // }
 
   //delete user by id
   deleteUser(id){
@@ -23,9 +23,9 @@ export class EndpointsService {
 
   ////////STATES///////////////
   //create state
-  createState(){
-    this.http.post(`${baseUrl}api/state/`)
-  }
+  // createState(){
+  //   this.http.post(`${baseUrl}api/state/`)
+  // }
 
   //get all states
   getAllStates(){
@@ -43,9 +43,9 @@ export class EndpointsService {
   }
   
   //update state by id
-  updateState(id){
-    this.http.put(`${baseUrl}api/state/${id}`)
-  }
+  // updateState(id){
+  //   this.http.put(`${baseUrl}api/state/${id}`)
+  // }
 
   //delete state by id
   deleteState(id){
@@ -63,20 +63,20 @@ export class EndpointsService {
     this.http.get(`${baseUrl}api/landmark//user/${userId}`)
   }
 
-  //create single landmark
-  createLandmark(){
-    this.http.post(`${baseUrl}api/landmark/`)
-  }
+  // //create single landmark
+  // createLandmark(){
+  //   this.http.post(`${baseUrl}api/landmark/`)
+  // }
 
   //get single landmark by id for updating
   getUserLandmark(id){
     this.http.get(`${baseUrl}api/landmark/id/${id}`)
   }
 
-  //update landmark by id
-  updateLandmark(id){
-    this.http.put(`${baseUrl}api/landmark/${id}`)
-  }
+  // //update landmark by id
+  // updateLandmark(id){
+  //   this.http.put(`${baseUrl}api/landmark/${id}`)
+  // }
 
   //delete landmark by id
   deleteLandmark(id){
