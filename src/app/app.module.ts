@@ -23,28 +23,18 @@ import { HomeComponent } from './home/home.component';
 import { HomeDisplayComponent } from './home/home-display/home-display.component';
 
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
-
-import { ProfileComponent } from './landmark/profile.component';
-import { ProfileDisplayComponent } from './landmark/profile-display/profile-display.component';
-import { CreateComponent } from './landmark/create/create.component';
-import { EditComponent } from './landmark/edit/edit.component';
-
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-
-import { CreatestateComponent } from './state/createstate/createstate.component';
-import { EditstateComponent } from './state/editstate/editstate.component';
 import { StateComponent } from './state/state.component';
+import { StateComponentUpdate } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 
 
-
-import { StateComponent, StateComponentUpdate } from './state/state.component';
 
 
 @NgModule({
@@ -59,9 +49,6 @@ import { StateComponent, StateComponentUpdate } from './state/state.component';
     AuthComponent,
     SignupComponent,
     SigninComponent,
-
-    CreatestateComponent,
-    EditstateComponent,
     StateComponent,
     LandmarkEditComponent,
     LandmarkCreateComponent,
@@ -74,12 +61,9 @@ import { StateComponent, StateComponentUpdate } from './state/state.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     RouterModule,
     HttpClientModule,
-    MatGridListModule
-   
-
+    MatGridListModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,

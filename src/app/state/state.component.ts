@@ -1,16 +1,38 @@
-import {Component} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
+import { EndpointsService } from '../services/endpoints.service';
+import { HttpClientModule } from '@angular/common/http';
 
-/**
- * @title Dialog with header, scrollable content and actions
- */
+
 @Component({
   selector: 'app-state',
   templateUrl: 'state.component.html',
   styleUrls: ['state.component.css'],
 })
-export class StateComponent {
-  constructor(public dialog: MatDialog) {}
+export class StateComponent implements OnInit {
+
+  allStates: any
+  userStates: any
+  stateid: number
+
+  constructor(private endpointsservice: EndpointsService, private http:HttpClientModule, public dialog: MatDialog) {}
+
+  ngOnInit() {
+
+    this.endpointsservice.getUserStates().subscribe(data => {
+      this.userStates=data;
+      console.log(this.userStates);
+    })
+  }
+
+  deleteState(id){
+    this.endpointsservice.deleteState(id).subscribe(data => {
+      console.log('state deleted');
+    })
+  }
+
+
+
 
   openDialog() {
     const dialogRef = this.dialog.open(StateComponentUpdate);
@@ -22,7 +44,7 @@ export class StateComponent {
 }
 
 @Component({
-  selector: 'app-state-updatea',
+  selector: 'app-state-update',
   templateUrl: 'update.component.html',
 })
 export class StateComponentUpdate {}

@@ -6,7 +6,7 @@ const baseUrl='http://localhost:4050/'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTUyNTY4OTIzLCJleHAiOjE1NTI2NTUzMjN9.dwveL9K6U6_rRCHmPV4q6JSbWeNM0RXna8oljb8nYxM'
+    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUyNTg0Nzk3LCJleHAiOjE1NTI2NzExOTd9.j3biSGoFRT60m3nc9Cdh5ASrbYVd9AK4ROgm6zqBOM4'
   })
 };
 
@@ -50,6 +50,10 @@ export class EndpointsService {
     return this.http.get(`${baseUrl}api/state/`)
   }
 
+  getUserStates(){
+    return this.http.get(`${baseUrl}api/state/1`)
+  }
+
   //get all unique states
   getAllUnique(){
     return this.http.get(`${baseUrl}api/state/unique`)
@@ -73,7 +77,7 @@ export class EndpointsService {
 
   //delete state by id
   deleteState(id){
-    return this.http.delete(`${baseUrl}api/state/${id}`)
+    return this.http.delete(`${baseUrl}api/state/3`)
   }
 
   /////////LANDMARKS///////////////
@@ -84,7 +88,7 @@ export class EndpointsService {
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
+    return this.http.get(`${baseUrl}api/landmark/user/5`, httpOptions);
   }
 
 
