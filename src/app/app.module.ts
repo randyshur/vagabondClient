@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDisplayComponent } from './home/home-display/home-display.component';
