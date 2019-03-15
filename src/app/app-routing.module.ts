@@ -8,7 +8,7 @@ import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
 
-import { StateComponent } from './state/state.component';
+
 
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
 
@@ -21,7 +21,7 @@ const routes: Routes = [
 
 
   { path: 'landmark', component: LandmarkDisplayComponent },
-=======
+
 
 
   { path: 'landmark', component: LandmarkDisplayComponent },
