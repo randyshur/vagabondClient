@@ -105,7 +105,4 @@ export class EndpointsService {
 
 }
 
-  getAllLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/`)
-  }
 

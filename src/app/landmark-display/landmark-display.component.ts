@@ -48,7 +48,7 @@ export class LandmarkDisplayComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     }); */
   }
-=======
+
 
 
   // openDialog() {

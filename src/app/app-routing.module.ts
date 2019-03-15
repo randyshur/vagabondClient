@@ -11,11 +11,14 @@ import { UserComponent } from './user/user.component';
 
 
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'user', component: UserComponent },
+  { path: 'home', component: HomeComponent},
+  
 
   { path: 'state', component: StateComponent },
 
