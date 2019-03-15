@@ -49,9 +49,4 @@ export class EndpointsService {
 
   }
 
-  /////////LANDMARKS///////////////
-  //get all landmarks, for home, admin
-  getAllLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/`)
-  }
 }

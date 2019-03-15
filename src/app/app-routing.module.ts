@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { StateComponent } from './state/state.component';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './signin/signin.component';
@@ -14,8 +15,15 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'user', component: UserComponent },
+  { path: 'home', component: HomeComponent},
+  
 
   { path: 'state', component: StateComponent },
+
+
+  { path: 'landmark', component: LandmarkDisplayComponent },
+
+
 
   { path: 'landmark', component: LandmarkDisplayComponent },
   { path: 'home', component: HomeComponent }

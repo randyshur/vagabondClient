@@ -1,19 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { RouterModule} from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatToolbar } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar/navbar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDisplayComponent } from './home/home-display.component';
 import { AdminComponent } from './admin/admin.component';
@@ -34,32 +35,50 @@ import { EndpointsService } from './services/endpoints.service';
     NavbarComponent,
     HomeComponent,
     HomeDisplayComponent,
+
+
     AdminComponent,
-    SignInComponent,
+
     SignUpComponent,
-    AdminComponent,
+    SignInComponent,
     UserComponent,
+
     StateComponent,
     StateComponentUpdate,
+
     LandmarkEditComponent,
     LandmarkDisplayComponent,
     LandmarkCreateComponent,
+
   ],
   imports: [
     AppRoutingModule,
+
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+
+  
+
+
+
     MatGridListModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+
+    MatNativeDateModule,
+    MatToolbarModule,
+    AppRoutingModule,
+
+
     MatNativeDateModule
+
   ],
   entryComponents: [
     StateComponent,
