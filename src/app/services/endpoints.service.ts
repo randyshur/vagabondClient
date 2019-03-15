@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 import { User } from '../models/user'
 
-const baseUrl = 'http://localhost:4050/api'
+const baseUrl = 'http://localhost:4050/'
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTUyNTY4OTIzLCJleHAiOjE1NTI2NTUzMjN9.dwveL9K6U6_rRCHmPV4q6JSbWeNM0RXna8oljb8nYxM'
+    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTUyNjU0ODA5LCJleHAiOjE1NTI3NDEyMDl9.9MVyd7iy5g4WXWXp0lEUDP0zijIKu4Ehdn6Rfv4tuso'
   })
 };
 
@@ -18,17 +17,25 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class EndpointsService {
+  public token = localStorage.getItem('token')
+          // public httpOptions = {
+          //   headers: new HttpHeaders({
+          //     'Content-Type':  'application/json',
+          //     'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsImlhdCI6MTU1MjYwOTY0OCwiZXhwIjoxNTUyNjk2MDQ4fQ.yQ3Rts7FBdxVU6QvnPUqrx57whrhow53yZxApKzJDlU'
+          //   })
+          // };
 
   constructor(private http: HttpClient) {}
 
   //////USERS/////////////
 
   signup(user: User) {
-    return this.http.post(`${baseUrl}/user/signup`, user);
+    // console.log(user)
+    return this.http.post(`${baseUrl}api/user/signup`, user);
   }
 
   signin(user: User) {
-    return this.http.post(`${baseUrl}/user/signup`, user);
+    return this.http.post(`${baseUrl}api/user/signin`, user);
   }
 
   //update user by id
@@ -60,7 +67,7 @@ export class EndpointsService {
   }
 
   getUserStates(userId){
-    return this.http.get(`${baseUrl}api/state/${userId}`)
+    return this.http.get(`${baseUrl}api/state/${userId}`, httpOptions)
   }
   
   //get all states
@@ -108,10 +115,8 @@ export class EndpointsService {
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
-
+    return this.http.get(`${baseUrl}api/landmark/user/2`, httpOptions);
   }
-
 
   //create single landmark
 
@@ -129,7 +134,7 @@ export class EndpointsService {
   //get single landmark by id for updating
 
   getUserLandmark(id){
-    return this.http.get(`${baseUrl}api/landmark/id/${id}`)
+    return this.http.get(`${baseUrl}api/landmark/id/${id}`, httpOptions)
 
   }
 
@@ -150,7 +155,7 @@ export class EndpointsService {
   //delete landmark by id
 
   deleteLandmark(id){
-    return this.http.delete(`${baseUrl}api/landmark/${id}`)
+    return this.http.delete(`${baseUrl}api/landmark/${id}`, httpOptions)
 
   }
 
