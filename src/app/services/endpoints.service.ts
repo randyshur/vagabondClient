@@ -102,10 +102,7 @@ export class EndpointsService {
   /////////LANDMARKS///////////////
   //get all landmarks, for home, admin
 
-  getAllLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/`)
-  }
-
+  
   //get all user landmarks
   getUserLandmarks(){
     return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
