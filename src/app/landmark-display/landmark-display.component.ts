@@ -45,11 +45,11 @@ export class LandmarkDisplayComponent implements OnInit {
     })
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open();
+  // openDialog() {
+  //   const dialogRef = this.dialog.open();
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
 }
