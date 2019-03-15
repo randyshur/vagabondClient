@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
 
-/**
- * @title Dialog with header, scrollable content and actions
- */
 @Component({
   selector: 'app-state',
   templateUrl: 'state.component.html',
@@ -22,7 +19,7 @@ export class StateComponent {
 }
 
 @Component({
-  selector: 'app-state-updatea',
+  selector: 'app-state-update',
   templateUrl: 'update.component.html',
 })
 export class StateComponentUpdate {}
