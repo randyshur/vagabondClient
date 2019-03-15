@@ -5,3 +5,13 @@
     Comments: <input type="text" name="comments"><br>
     Date last visited: <input type="date" name="date-visited" value="">
   </form>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Update</button>
+  </mat-dialog-actions>
+
+
+
+</mat-dialog-content>
+

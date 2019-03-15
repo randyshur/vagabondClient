@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EndpointsService } from './endpoints.service';
+import { LandmarkService } from './landmark.service';
 
-describe('EndpointsService', () => {
+describe('LandmarkService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: EndpointsService = TestBed.get(EndpointsService);
+    const service: LandmarkService = TestBed.get(LandmarkService);
     expect(service).toBeTruthy();
   });
 });
