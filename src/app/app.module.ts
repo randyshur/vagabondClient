@@ -15,7 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { HomeDisplayComponent } from './home/home-display/home-display.component';
+import { HomeDisplayComponent } from './home/home-display.component';
 import { AdminComponent } from './admin/admin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
