@@ -33,7 +33,7 @@ import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
 
-import { EndpointsService } from './services/endpoints.service';
+import { LandmarkService } from './services/landmark.service';
 
 @NgModule({
 
@@ -80,7 +80,7 @@ import { EndpointsService } from './services/endpoints.service';
     StateComponent,
     StateComponentUpdate
   ],
-  providers: [EndpointsService],
+  providers: [LandmarkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
