@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../services/home.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,19 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
-  allLandmarks: any
-
-  constructor(private HomeService: HomeService, private http:HttpClientModule) { }
+  constructor() { }
 
   ngOnInit() {
-    
-
-this.HomeService.getAllLandmarks().subscribe(data => {
-  this.allLandmarks=data;
-  console.log(this.allLandmarks)
-})
-  
-
+    //fetch all data
   }
 
 }
