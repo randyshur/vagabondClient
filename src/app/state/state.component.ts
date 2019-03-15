@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
+import { StateService } from '../services/state.service';
+import { HttpClientModule } from '@angular/common/http';
 import {MatDialog} from '@angular/material';
 
 @Component({
@@ -6,8 +8,23 @@ import {MatDialog} from '@angular/material';
   templateUrl: 'state.component.html',
   styleUrls: ['state.component.css'],
 })
-export class StateComponent {
-  constructor(public dialog: MatDialog) {}
+export class StateComponent implements OnInit {
+
+  allStates: any
+  allUserStates: any
+  UserState: any
+
+
+
+  constructor(private StateService: StateService, private http:HttpClientModule, public dialog: MatDialog) {}
+
+  ngOnInit() {
+
+    this.StateService.getAllStates().subscribe(data => {
+      this.allStates
+    })
+
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(StateComponentUpdate);
