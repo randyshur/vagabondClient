@@ -1,12 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EndpointsService } from './endpoints.service';
+import { StateService } from './state.service';
 
-describe('EndpointsService', () => {
+describe('StateService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: EndpointsService = TestBed.get(EndpointsService);
+    const service: StateService = TestBed.get(StateService);
     expect(service).toBeTruthy();
   });
 });
+
