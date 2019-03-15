@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/user'
 
-const baseUrl = 'http://localhost:4050/api'
+const baseUrl = 'http://localhost:4050/'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,11 +24,11 @@ export class EndpointsService {
   //////USERS/////////////
 
   signup(user: User) {
-    return this.http.post(`${baseUrl}/user/signup`, user);
+    return this.http.post(`${baseUrl}api/user/signup`, user);
   }
 
   signin(user: User) {
-    return this.http.post(`${baseUrl}/user/signup`, user);
+    return this.http.post(`${baseUrl}api/user/signup`, user);
   }
 
   //update user by id
@@ -68,7 +68,7 @@ export class EndpointsService {
   }
 
   getUserStates(){
-    return this.http.get(`${baseUrl}api/state/1`)
+    return this.http.get(`${baseUrl}api/state/`)
   }
 
   //get all unique states
@@ -110,7 +110,7 @@ export class EndpointsService {
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
+    return this.http.get(`${baseUrl}api/landmark/`, httpOptions);
 
   }
 

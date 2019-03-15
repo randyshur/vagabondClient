@@ -29,6 +29,9 @@ import { AdminComponent } from './admin/admin.component';
 import { StateComponent } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
+import { SignUpComponent } from './signup/signup.component';
+import { SignInComponent } from './signin/signin.component';
+import { UserComponent } from './user/user.component';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 
@@ -46,6 +49,9 @@ import { StateComponentUpdate } from './state/state.component';
     HomeDisplayComponent,
     LandmarkDisplayComponent,
     AdminComponent,
+    SignInComponent,
+    SignUpComponent,
+    UserComponent,
     StateComponent,
     LandmarkEditComponent,
     LandmarkCreateComponent,

@@ -12,15 +12,8 @@ const routes: Routes = [
   { path: 'SignUp', component: SignUpComponent },
   { path: 'User', component: UserComponent },
   { path: 'landmark', component: LandmarkDisplayComponent },
-<<<<<<< HEAD
   { path: 'state', component: StateComponent}
 ]
-=======
-
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
-];
->>>>>>> f95670d1624ac32253f23d997b66105c629b9017
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

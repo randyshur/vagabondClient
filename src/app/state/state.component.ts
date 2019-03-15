@@ -2,14 +2,30 @@ import {Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import { EndpointsService } from '../services/endpoints.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
 
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-state',
   templateUrl: 'state.component.html',
   styleUrls: ['state.component.css'],
 })
+
+
+
+
 export class StateComponent implements OnInit {
+
+
+  searchForm: FormGroup;
+  baseUrl = 'http://localhost:4050/api/state'
+  _data = {};
 
   allStates: any
   userStates: any
@@ -37,9 +53,8 @@ export class StateComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(StateComponentUpdate);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe(
+    );
   }
 }
 
@@ -47,7 +62,18 @@ export class StateComponent implements OnInit {
   selector: 'app-state-update',
   templateUrl: 'update.component.html',
 })
-export class StateComponentUpdate {}
+export class StateComponentUpdate {
+  tiles: Tile[] = [
+    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  ];
+}
+
+
+
+
 
 
 
