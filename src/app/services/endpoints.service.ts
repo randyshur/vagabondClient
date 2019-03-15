@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 import { User } from '../models/user'
 
 const baseUrl = 'http://localhost:4050/api'
@@ -99,53 +98,5 @@ export class EndpointsService {
   getAllLandmarks(){
     return this.http.get(`${baseUrl}api/landmark/`)
   }
-
-  //get all user landmarks
-  getUserLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
-  }
-
-
-  //create single landmark
-
-  createLandmark(){
-    // return this.http.post(`${baseUrl}api/landmark/`)
-
-  }
-
-  // //create single landmark
-  // createLandmark(){
-  //   this.http.post(`${baseUrl}api/landmark/`)
-  // }
-
-
-  //get single landmark by id for updating
-
-  getUserLandmark(id){
-    return this.http.get(`${baseUrl}api/landmark/id/${id}`)
-
-  }
-
-
-  //update landmark by id
-
-  updateLandmark(id){
-    // return this.http.put(`${baseUrl}api/landmark/${id}`)
-
-  }
-
-  // //update landmark by id
-  // updateLandmark(id){
-  //   this.http.put(`${baseUrl}api/landmark/${id}`)
-  // }
-
-
-  //delete landmark by id
-
-  deleteLandmark(id){
-    return this.http.delete(`${baseUrl}api/landmark/${id}`)
-
-  }
-
 
 }
