@@ -18,7 +18,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class EndpointsService {
-
   constructor(private http: HttpClient) {}
 
   //////USERS/////////////
@@ -56,7 +55,6 @@ export class EndpointsService {
 
   createState(){
     // return this.http.post(`${baseUrl}api/state/`)
-
   }
 
   getUserStates(userId){
@@ -64,7 +62,6 @@ export class EndpointsService {
   }
   
   //get all states
-
   getAllStates(){
     return this.http.get(`${baseUrl}api/state/`)
   }
@@ -77,14 +74,12 @@ export class EndpointsService {
   //get state by id for updating
   getState(id){
     return this.http.get(`${baseUrl}api/id/${id}`)
-
   }
 
   //update state by id
 
   updateState(id){
     // return this.http.put(`${baseUrl}api/state/${id}`)
-
   }
 
   // updateState(id){
@@ -101,7 +96,6 @@ export class EndpointsService {
 
   /////////LANDMARKS///////////////
   //get all landmarks, for home, admin
-
   getAllLandmarks(){
     return this.http.get(`${baseUrl}api/landmark/`)
   }
@@ -109,7 +103,6 @@ export class EndpointsService {
   //get all user landmarks
   getUserLandmarks(){
     return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
-
   }
 
 
