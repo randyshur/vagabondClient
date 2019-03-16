@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/user'
 
-const baseUrl = 'http://localhost:4050/api'
+const baseUrl = 'http://localhost:4050'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,11 +22,11 @@ export class EndpointsService {
   //////USERS/////////////
 
   signup(user: User) {
-    return this.http.post(`${baseUrl}/user/signup`, user);
+    return this.http.post(`${baseUrl}/api/user/signup`, user);
   }
 
   signin(user: User) {
-    return this.http.post(`${baseUrl}/user/signup`, user);
+    return this.http.post(`${baseUrl}/api/user/signin`, user);
   }
 
   //update user by id
