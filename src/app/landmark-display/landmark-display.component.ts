@@ -40,6 +40,17 @@ export class LandmarkDisplayComponent implements OnInit {
     })
   }
 
+
+  openDialog() {
+  /*  const dialogRef = this.dialog.open();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    }); */
+  }
+
+
+
   // openDialog() {
   //   const dialogRef = this.dialog.open(LandmarkDialogComponent);
 
