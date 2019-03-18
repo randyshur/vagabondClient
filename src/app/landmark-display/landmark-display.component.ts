@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
 import { HttpClientModule} from '@angular/common/http';
 import {MatDialog} from '@angular/material';
+import { getAllDebugNodes } from '@angular/core/src/debug/debug_node';
 
 @Component({
   selector: 'app-landmark-display',
@@ -20,12 +21,19 @@ export class LandmarkDisplayComponent implements OnInit {
     // this.userId=this.endpointsservice.token
     // let userId = this.userLandmarks.state.userId
     // let userIthis.userLandmarks[0].state.userId)
-    this.landmarkService.getUserLandmarks().subscribe(data => {
-      this.userLandmarks=data;
-      console.log(this.userLandmarks)
-      console.log(this.userLandmarks[0].state.userId)
-    })
+    
+      // console.log(this.userLandmarks[0].state.userId)
+    this.getAll()
   }
+
+  getAll(user_id){
+    this.landmarkService.getUserLandmarks(user_id).subscribe(data => {
+      console.log(data)
+      this.userLandmarks=data
+      // this.userLandmarks=data;
+      // console.log(this.userLandmarks)
+    }
+    )}
 
   getLandmark(id){
   this.landmarkService.getUserLandmark(id).subscribe(data => {
@@ -37,6 +45,7 @@ export class LandmarkDisplayComponent implements OnInit {
   deleteLandmark(id){
     this.landmarkService.deleteLandmark(id).subscribe(data => {
       console.log('deleted');
+      this.getAll()
     })
   }
 
