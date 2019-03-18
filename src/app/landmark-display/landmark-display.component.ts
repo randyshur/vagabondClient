@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
 import { HttpClientModule} from '@angular/common/http';
 import {MatDialog} from '@angular/material';
-import { getAllDebugNodes } from '@angular/core/src/debug/debug_node';
 
 @Component({
   selector: 'app-landmark-display',
