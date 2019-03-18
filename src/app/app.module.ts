@@ -27,6 +27,9 @@ import { LandmarkCreateComponent } from './landmark-create/landmark-create.compo
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
+import { AuthenticationService } from './services/authentication.service';
+import { AlertService } from './services/alert.service';
+import { HomeService } from './services/home.service';
 
 @NgModule({
 
@@ -35,17 +38,12 @@ import { EndpointsService } from './services/endpoints.service';
     NavbarComponent,
     HomeComponent,
     HomeDisplayComponent,
-
-
     AdminComponent,
-
     SignUpComponent,
     SignInComponent,
     UserComponent,
-
     StateComponent,
     StateComponentUpdate,
-
     LandmarkEditComponent,
     LandmarkDisplayComponent,
     LandmarkCreateComponent,
@@ -53,38 +51,28 @@ import { EndpointsService } from './services/endpoints.service';
   ],
   imports: [
     AppRoutingModule,
-
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-
-  
-
-
-
     MatGridListModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-
     MatNativeDateModule,
     MatToolbarModule,
     AppRoutingModule,
-
-
     MatNativeDateModule
-
   ],
   entryComponents: [
     StateComponent,
     StateComponentUpdate
   ],
-  providers: [LandmarkService, EndpointsService],
+  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
