@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
-import {MatDialog} from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
-// const token = localStorage.getItem('token')
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type':  'application/json',
-//     'Authorization': token
-//   })
-// };
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +18,10 @@ export class LandmarkDisplayComponent implements OnInit {
 
   userLandmarks: any
   userLandmark: any
-  userId: any
   token: any
-  constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog) { }
+  landmarkForm: FormGroup
+
+  constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
   
   ngOnInit() {
     this.setToken()
@@ -42,8 +37,6 @@ export class LandmarkDisplayComponent implements OnInit {
     this.landmarkService.getUserLandmarks().subscribe(data => {
       console.log(data)
      this.userLandmarks=data
-      // this.userLandmarks=data;
-      // console.log(this.userLandmarks)
     }
     )}
 
@@ -61,23 +54,65 @@ export class LandmarkDisplayComponent implements OnInit {
     })
   }
 
-
   openDialog() {
-  /*  const dialogRef = this.dialog.open();
+    const dialogRef = this.dialog.open(CreateDialog);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    }); */
+    }); 
   }
 
+}
 
+// import {Component, Inject} from '@angular/core';
+// import {MAT_DIALOG_DATA} from '@angular/material';
 
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(LandmarkDialogComponent);
+@Component({
+  selector: 'create-dialog',
+  templateUrl: 'create-dialog.html',
+  // template: 'passed in {{ data.user }}'
+})
+export class CreateDialog {
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
+  userLandmarks: any
+  userLandmark: any
+  userId: any
+  token: any
+  landmarkForm: FormGroup
 
+  constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
+  
+  ngOnInit() {
+    this.setToken()
+    // this.getAll()
+
+    this.landmarkForm = new FormGroup({
+      title: new FormControl(),
+      address: new FormControl(),
+      city: new FormControl(),
+      zip: new FormControl(),
+      dateLastVisited: new FormControl(),
+      imageURL: new FormControl(),
+      comments: new FormControl(),
+      state: new FormControl()
+    })
+  }
+
+  setToken(){
+    const token = localStorage.getItem('token')
+    this.token=token
+  }
+
+  onSubmit(){
+    console.log(this.landmarkForm.value)
+  
+    this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
+      console.log(data);
+    })
+    this.closeDialog()
+  }
+
+  closeDialog(){
+    const dialogRef = this.dialog.closeAll();
+  }
 }

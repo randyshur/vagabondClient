@@ -1,5 +1,7 @@
 
 <h1>Landmark Display</h1>
+
+<button (click)="openDialog()">Create New Landmark</button>
 <mat-grid-list cols ="3" *ngFor="let userLandmark of userLandmarks">
     <mat-grid-tile-header><h2>{{userLandmark.title}}</h2></mat-grid-tile-header>
 
@@ -7,4 +9,4 @@
   <mat-grid-tile><br>{{userLandmark.address}}<br>{{userLandmark.city}}<br>{{userLandmark.comments}}<br>{{userLandmark.dateLastVisited}}</mat-grid-tile> <mat-grid-tile><button id={{userLandmark.id}} (click)="getLandmark(userLandmark.id)">edit</button><button id={{userLandmark.id}} (click)="deleteLandmark(userLandmark.id)">delete</button></mat-grid-tile>
 </mat-grid-list>
 
-<app-landmark-create></app-landmark-create>
+<!-- <app-landmark-create></app-landmark-create> -->
