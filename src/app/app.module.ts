@@ -24,7 +24,7 @@ import { UserComponent } from './user/user.component';
 import { StateComponent, StateComponentUpdate } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
-import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
+import { LandmarkDisplayComponent, CreateDialog } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -46,7 +46,7 @@ import { HomeService } from './services/home.service';
     StateComponentUpdate,
     LandmarkEditComponent,
     LandmarkDisplayComponent,
-    LandmarkCreateComponent,
+    CreateDialog,
 
   ],
   imports: [
@@ -66,11 +66,14 @@ import { HomeService } from './services/home.service';
     MatNativeDateModule,
     MatToolbarModule,
     AppRoutingModule,
-    MatNativeDateModule
+    MatNativeDateModule, 
+    // CreateDialog
   ],
   entryComponents: [
     StateComponent,
-    StateComponentUpdate
+    StateComponentUpdate,
+    LandmarkDisplayComponent,
+    CreateDialog
   ],
   providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
   bootstrap: [AppComponent]

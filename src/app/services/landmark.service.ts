@@ -27,14 +27,16 @@ export class LandmarkService {
 
   //create single landmark
   createLandmark(form){
-    return this.http.post(`${baseUrl}/api/landmark/`, httpOptions)
+    console.log(form)
+    JSON.stringify(form)
+    return this.http.post(`${baseUrl}/api/landmark/`, form, httpOptions)
 
   }
 
   //get single landmark by id for updating
   getUserLandmark(id){
     return this.http.get(`${baseUrl}/api/landmark/id/${id}`, httpOptions)
-  }
+   }
 
   //update landmark by id
   updateLandmark(id){
