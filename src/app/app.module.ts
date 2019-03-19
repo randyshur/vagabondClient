@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MatToolbar } from '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
@@ -29,6 +29,9 @@ import { LandmarkDisplayComponent } from './landmark-display/landmark-display.co
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
 import { StateDropdownComponent } from './state-dropdown/state-dropdown.component';
+import { AuthenticationService } from './services/authentication.service';
+import { AlertService } from './services/alert.service';
+import { HomeService } from './services/home.service';
 
 @NgModule({
 
@@ -37,17 +40,12 @@ import { StateDropdownComponent } from './state-dropdown/state-dropdown.componen
     NavbarComponent,
     HomeComponent,
     HomeDisplayComponent,
-
-
     AdminComponent,
-
     SignUpComponent,
     SignInComponent,
     UserComponent,
-
     StateComponent,
     StateComponentUpdate,
-
     LandmarkEditComponent,
     LandmarkDisplayComponent,
     LandmarkCreateComponent,
@@ -56,18 +54,12 @@ import { StateDropdownComponent } from './state-dropdown/state-dropdown.componen
   ],
   imports: [
     AppRoutingModule,
-
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-
-  
-
-
-
     MatGridListModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -75,20 +67,16 @@ import { StateDropdownComponent } from './state-dropdown/state-dropdown.componen
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-
     MatNativeDateModule,
     MatToolbarModule,
     AppRoutingModule,
-
-
     MatNativeDateModule
-
   ],
   entryComponents: [
     StateComponent,
     StateComponentUpdate
   ],
-  providers: [LandmarkService, EndpointsService],
+  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

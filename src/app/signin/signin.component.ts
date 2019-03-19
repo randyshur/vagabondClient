@@ -52,7 +52,12 @@ export class SignInComponent implements OnInit {
         this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
-                data => {
+                data => { 
+                    console.log(data['user'])
+                    localStorage.setItem('token', data['sessionToken']);
+                    localStorage.setItem('admin', data['user'].admin);
+                    localStorage.setItem('id', data['user'].id);
+
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {

@@ -4,10 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const baseUrl = 'http://localhost:4050'
 
+const token = localStorage.getItem('token')
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTUyNjU0ODA5LCJleHAiOjE1NTI3NDEyMDl9.9MVyd7iy5g4WXWXp0lEUDP0zijIKu4Ehdn6Rfv4tuso'
+    'Authorization': token
   })
 };
 
@@ -20,19 +22,18 @@ export class LandmarkService {
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}/api/landmark/user/2`, httpOptions);
+    return this.http.get(`${baseUrl}/api/landmark/user`, httpOptions);
   }
 
   //create single landmark
-  createLandmark(){
-    // return this.http.post(`${baseUrl}api/landmark/`)
+  createLandmark(form){
+    return this.http.post(`${baseUrl}/api/landmark/`, httpOptions)
 
   }
 
   //get single landmark by id for updating
   getUserLandmark(id){
     return this.http.get(`${baseUrl}/api/landmark/id/${id}`, httpOptions)
-
   }
 
   //update landmark by id
@@ -42,6 +43,6 @@ export class LandmarkService {
   }
 
   deleteLandmark(id){
-    return this.http.delete(`${baseUrl}/api/landmark/${id}`)
+    return this.http.delete(`${baseUrl}/api/landmark/${id}`, httpOptions)
   }
 }
