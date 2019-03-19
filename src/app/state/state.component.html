@@ -1,4 +1,3 @@
-<h1>State of the Union</h1>
 <!-- <app-list-states></app-list-states> -->
 
 <!-- <mat-dialog-actions>
@@ -7,13 +6,13 @@
 </mat-dialog-actions> -->
 <!-- <mat-grid-list *ngIf="userStates" class="StateGrid" cols="2" rowHeight="2:1">
   <mat-grid-tile>
-      <P>State</P>
-      <p>Comments</p>
-      <p>Date last visited</p>
-
+    <P>State</P>
+    <p>Comments</p>
+    <p>Date last visited</p>
+    
   </mat-grid-tile>
   <mat-grid-tile>
-<p>something something that displays data</p>
+    <p>something something that displays data</p>
   </mat-grid-tile>
 </mat-grid-list> -->
 
@@ -21,23 +20,48 @@
 
 
 <!-- <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile> -->
+  *ngFor="let tile of tiles"
+  [colspan]="tile.cols"
+  [rowspan]="tile.rows"
+  [style.background]="tile.color">
+  {{tile.text}}
+</mat-grid-tile> -->
 
 
+<!-- 
 
-<mat-grid-list cols="2" rowHeight="100px">
+state: {
+  type: Sequelize.STRING,
+  allowNull: false
+},
+dateLastVisited: {
+  type: Sequelize.DATE,
+  field: 'date_last_visited',
+  allowNull: true
+},
+comments: {
+  type: Sequelize.TEXT,
+  allowNull: true -->
+
+<h1>State of the Union</h1>
+
+
+<mat-grid-list cols="3" *ngFor="let state of userStates">
+  <mat-grid-tile-header><h2>{{state.state}}</h2></mat-grid-tile-header>
   <mat-grid-tile>
+    <mat-grid-tile-header><h3>{{state.comments}}</h3></mat-grid-tile-header>
     <mat-dialog-actions>
         <button mat-button (click)="deleteState()">Delete</button>
       <button mat-button (click)="openDialog()">Update</button>
       </mat-dialog-actions>
+      <h3>{{state.dateLastVisited}}</h3>
     </mat-grid-tile>
   <mat-grid-tile>
+      <mat-grid-tile-header><h3>{{state.comments}}</h3></mat-grid-tile-header>
       <app-list-states></app-list-states>
   </mat-grid-tile>
 </mat-grid-list>
+
+
+
+

@@ -52,8 +52,8 @@ export class StateComponent implements OnInit {
 
   getAllStates(){
     this.stateService.getAllStates().subscribe(data => {
-      console.log(data)
       this.userStates=data
+      console.log()
     })
   }
 

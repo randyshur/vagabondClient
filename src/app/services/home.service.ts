@@ -7,10 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const baseUrl = 'http://localhost:4050'
 
+const token = localStorage.getItem('token')
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTUzMDA0MDg4LCJleHAiOjE1NTMwOTA0ODh9.yRPGjlDogfjpWzUoOdmVyO1A7Vy9QLLTpHMYU6Iqdjo'
+    'Authorization': token
   })
 };
 
@@ -22,5 +24,5 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
 getAllLandmarks(){
-  return this.http.get(`${baseUrl}/api/home/`)
+  return this.http.get(`${baseUrl}/api/home/`, httpOptions)
 }}

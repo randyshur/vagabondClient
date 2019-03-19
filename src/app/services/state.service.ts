@@ -7,10 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const baseUrl = 'http://localhost:4050'
 
+const token = localStorage.getItem('token')
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTUzMDA0MDg4LCJleHAiOjE1NTMwOTA0ODh9.yRPGjlDogfjpWzUoOdmVyO1A7Vy9QLLTpHMYU6Iqdjo'
+    'Authorization': token
   })
 };
 
@@ -41,7 +43,7 @@ getUserStates(id){
 //get all states
 
 getAllStates(){
-  return this.http.get(`${baseUrl}/api/state/unique`, httpOptions)
+  return this.http.get(`${baseUrl}/api/state/`, httpOptions)
 }
 
 //get all unique states
