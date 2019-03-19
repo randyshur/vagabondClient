@@ -53,9 +53,10 @@ export class SignInComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => { 
-                    console.log(data['user'].admin)
-                    localStorage.setItem('token', JSON.stringify(data['sessionToken']));
-                    localStorage.setItem('admin', JSON.stringify(data['user'].admin));
+                    console.log(data['user'])
+                    localStorage.setItem('token', data['sessionToken']);
+                    localStorage.setItem('admin', data['user'].admin);
+                    localStorage.setItem('id', data['user'].id);
 
                     this.router.navigate([this.returnUrl]);
                 },

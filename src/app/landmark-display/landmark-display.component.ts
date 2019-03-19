@@ -1,9 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import {MatDialog} from '@angular/material';
-import { getAllDebugNodes } from '@angular/core/src/debug/debug_node';
+import { Injectable } from '@angular/core';
 
+// const token = localStorage.getItem('token')
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type':  'application/json',
+//     'Authorization': token
+//   })
+// };
+
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-landmark-display',
   templateUrl: './landmark-display.component.html',
@@ -18,18 +29,19 @@ export class LandmarkDisplayComponent implements OnInit {
   constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog) { }
   
   ngOnInit() {
-    // this.userId=this.endpointsservice.token
-    // let userId = this.userLandmarks.state.userId
-    // let userIthis.userLandmarks[0].state.userId)
-    
-      // console.log(this.userLandmarks[0].state.userId)
+    this.setToken()
     this.getAll()
   }
 
-  getAll(user_id){
-    this.landmarkService.getUserLandmarks(user_id).subscribe(data => {
+  setToken(){
+    const token = localStorage.getItem('token')
+    this.token=token
+  }
+
+  getAll(){
+    this.landmarkService.getUserLandmarks().subscribe(data => {
       console.log(data)
-      this.userLandmarks=data
+     this.userLandmarks=data
       // this.userLandmarks=data;
       // console.log(this.userLandmarks)
     }
