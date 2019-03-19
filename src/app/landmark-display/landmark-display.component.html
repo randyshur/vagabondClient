@@ -7,3 +7,4 @@
   <mat-grid-tile><br>{{userLandmark.address}}<br>{{userLandmark.city}}<br>{{userLandmark.comments}}<br>{{userLandmark.dateLastVisited}}</mat-grid-tile> <mat-grid-tile><button id={{userLandmark.id}} (click)="getLandmark(userLandmark.id)">edit</button><button id={{userLandmark.id}} (click)="deleteLandmark(userLandmark.id)">delete</button></mat-grid-tile>
 </mat-grid-list>
 
+<app-landmark-create></app-landmark-create>

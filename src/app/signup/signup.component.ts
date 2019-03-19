@@ -73,8 +73,9 @@ export class SignUpComponent implements OnInit {
                    this.alertService.success('SignUp successful', true);
                    this.newUser=data['sessionToken']
                    console.log(this.newUser);
-                   localStorage.setItem('token', JSON.stringify(data['sessionToken']));
-                   localStorage.setItem('admin', JSON.stringify(data['user'].admin));
+                   localStorage.setItem('token', data['sessionToken']);
+                   localStorage.setItem('admin', data['user'].admin);
+                   localStorage.setItem('id', data['user'].id);
                    this.loading = false;
                    this.router.navigate(['/home']);
 
