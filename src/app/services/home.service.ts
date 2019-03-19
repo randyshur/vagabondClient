@@ -10,7 +10,7 @@ const baseUrl = 'http://localhost:4050'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    //'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTUyNTY4OTIzLCJleHAiOjE1NTI2NTUzMjN9.dwveL9K6U6_rRCHmPV4q6JSbWeNM0RXna8oljb8nYxM'
+    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTUzMDA0MDg4LCJleHAiOjE1NTMwOTA0ODh9.yRPGjlDogfjpWzUoOdmVyO1A7Vy9QLLTpHMYU6Iqdjo'
   })
 };
 
@@ -22,5 +22,5 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
 getAllLandmarks(){
-  return this.http.get(`${baseUrl}/api/landmark/`)
+  return this.http.get(`${baseUrl}/api/home/`)
 }}

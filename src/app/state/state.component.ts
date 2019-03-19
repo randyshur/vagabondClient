@@ -46,14 +46,18 @@ export class StateComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.stateService.getUserStates().subscribe(data => {
-    //   this.userStates=data;
-    //   console.log(this.userStates)
-    //   console.log(this.userStates[0].state.userId)
-    // })
+    this.getAllStates()
+ 
   }
 
-  // data not read
+  getAllStates(){
+    this.stateService.getAllStates().subscribe(data => {
+      console.log(data)
+      this.userStates=data
+    })
+  }
+
+
   postState(){
     this.stateService.createState().subscribe(data => {
       this.allStates=data;
@@ -61,7 +65,6 @@ export class StateComponent implements OnInit {
     })
   }
 
-  // need more possibly
   deleteState(id){
     this.stateService.deleteState(id).subscribe(data => {
       console.log('state deleted');
