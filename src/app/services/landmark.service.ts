@@ -37,7 +37,7 @@ export class LandmarkService {
 
   //update landmark by id
   updateLandmark(id){
-    // return this.http.put(`${baseUrl}/api/landmark/${id}`)
+   //  return this.http.put(`${baseUrl}/api/landmark/${id}`)
 
   }
 

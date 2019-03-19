@@ -1,8 +1,10 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import { StateService } from '../services/state.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { StateDropdownComponent } from '../state-dropdown/state-dropdown.component';
 
 export interface Tile {
   color: string;
@@ -10,6 +12,10 @@ export interface Tile {
   rows: number;
   text: string;
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-state',
@@ -21,7 +27,10 @@ export interface Tile {
 
 
 export class StateComponent implements OnInit {
-
+  tiles: Tile[] = [
+    {text: '', cols: 1, rows: 1, color: 'lightblue'},
+    {text: '', cols: 1, rows: 1, color: 'lightgreen'},
+  ];
 
   searchForm: FormGroup;
   baseUrl = 'http://localhost:4050/api/state'
@@ -31,21 +40,47 @@ export class StateComponent implements OnInit {
   userStates: any
   stateid: number
 
-  constructor(private StateService: StateService, private http:HttpClientModule, public dialog: MatDialog) {}
+  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog) {}
+
+  
 
   ngOnInit() {
 
-    // this.StateService.getUserStates().subscribe(data => {
+    // this.stateService.getUserStates().subscribe(data => {
     //   this.userStates=data;
-    //   console.log(this.userStates);
+    //   console.log(this.userStates)
+    //   console.log(this.userStates[0].state.userId)
     // })
   }
 
+  // data not read
+  postState(){
+    this.stateService.createState().subscribe(data => {
+      this.allStates=data;
+      console.log(data)
+    })
+  }
+
+  // need more possibly
   deleteState(id){
-    this.StateService.deleteState(id).subscribe(data => {
+    this.stateService.deleteState(id).subscribe(data => {
       console.log('state deleted');
     })
   }
+
+  getState(id){
+    this.stateService.getUserStates(id).subscribe(data => {
+      this.userStates=data;
+      console.log(this.userStates);
+    })
+  }
+
+  // updateState(id){
+  //   this.stateService.updateState(id).subscribe(data => {
+  //     this.userStates=data;
+  //     console.log(this.userStates)
+  //   })
+  // }
 
 
 
@@ -63,13 +98,40 @@ export class StateComponent implements OnInit {
   templateUrl: 'update.component.html',
 })
 export class StateComponentUpdate {
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
+
+
+  searchForm: FormGroup;
+  baseUrl = 'http://localhost:4050/api/state'
+  _data = {};
+
+  allStates: any
+  userStates: any
+  stateid: number
+
+  updateState(id){
+    this.stateService.updateState(id).subscribe(data => {
+      this.userStates=data;
+      console.log(this.userStates)
+    })
+  }
+
+
+  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, public stateDropDown: StateDropdownComponent) {}
+
+
+
+
+  
+
 }
+
+
+
+
+
+
+
+
 
 
 

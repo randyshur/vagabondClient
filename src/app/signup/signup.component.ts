@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,6 +18,7 @@ export class SignUpComponent implements OnInit {
    signupForm: FormGroup;
    loading = false;
    submitted = false;
+   data: any
 
    constructor(
        private formBuilder: FormBuilder,
@@ -33,7 +33,6 @@ export class SignUpComponent implements OnInit {
          console.log("----currentUserValue---" + this.authenticationService.currentUserValue.token)
            //this.router.navigate(['/']);
        }
-
    }
 
    ngOnInit() {
@@ -69,35 +68,40 @@ export class SignUpComponent implements OnInit {
            .pipe(first())
            .subscribe(
                data => {
+                   console.log(data)
                    this.alertService.success('SignUp successful', true);
-                   /*
-                   this.endpointsService.signin(this.newUser)
-                   .pipe(map(user => {
-                     console.log("ere----"  + this.newUser.token)
-                     // login successful if there's a jwt token in the response
-                     if (user && this.newUser.token) {
-                         // store user details and jwt token in local storage to keep user logged in between page refreshes
-                         localStorage.setItem('currentUser', JSON.stringify(user));
-                         //this.currentUserSubject.next(user);
-                     }
+                   this.newUser=data['sessionToken']
+                   console.log(this.newUser);
+                   localStorage.setItem('token', JSON.stringify(data['sessionToken']));
+                   this.loading = false;
+                //    this.endpointsService.signin(this.newUser)
+                //    .pipe(map(user => {
+                //      console.log("ere----"  + this.newUser.token)
+                //      // login successful if there's a jwt token in the response
+                //      if (user && this.newUser.token) {
+                //          // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //          localStorage.setItem('currentUser', JSON.stringify(user));
+                //          //this.currentUserSubject.next(user);
+                //      }
 
-                     return user;
-                     */
+                    //  return user;
+                     
                     // this.router.navigate(['/user']);
 
                },
                error => {
                    this.alertService.error(error);
                    this.loading = false;
-               });
+               })
 
+            }
+            
+        }
+   
 
+//    logout() {
+//      this.authenticationService.logout();
+//      this.router.navigate(['/login']);
+//  }
 
-   }
-
-   logout() {
-     this.authenticationService.logout();
-     this.router.navigate(['/login']);
- }
-
-}
+  

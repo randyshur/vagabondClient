@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { LandmarkCreateComponent } from './landmark-create/landmark-create.compo
 import { LandmarkDisplayComponent } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
+import { StateDropdownComponent } from './state-dropdown/state-dropdown.component';
 
 @NgModule({
 
@@ -49,6 +51,7 @@ import { EndpointsService } from './services/endpoints.service';
     LandmarkEditComponent,
     LandmarkDisplayComponent,
     LandmarkCreateComponent,
+    StateDropdownComponent
 
   ],
   imports: [
@@ -66,6 +69,7 @@ import { EndpointsService } from './services/endpoints.service';
 
 
     MatGridListModule,
+    MatSelectModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,

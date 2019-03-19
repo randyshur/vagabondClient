@@ -1,20 +1,43 @@
 <h1>State of the Union</h1>
+<!-- <app-list-states></app-list-states> -->
 
-
-
-<mat-grid-list *ngIf="userStates" class="StateGrid" cols="2" rowHeight="2:1">
+<!-- <mat-dialog-actions>
+  <button mat-button (click)="deleteState()">Delete</button>
+<button mat-button (click)="openDialog()">Update</button>
+</mat-dialog-actions> -->
+<!-- <mat-grid-list *ngIf="userStates" class="StateGrid" cols="2" rowHeight="2:1">
   <mat-grid-tile>
       <P>State</P>
       <p>Comments</p>
       <p>Date last visited</p>
-  <mat-dialog-actions>
-    <button mat-button (click)="deleteState()">Delete</button>
-<button mat-button (click)="openDialog()">Update</button>
-</mat-dialog-actions>
 
   </mat-grid-tile>
   <mat-grid-tile>
 <p>something something that displays data</p>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
 
+
+
+
+<!-- <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile> -->
+
+
+
+<mat-grid-list cols="2" rowHeight="100px">
+  <mat-grid-tile>
+    <mat-dialog-actions>
+        <button mat-button (click)="deleteState()">Delete</button>
+      <button mat-button (click)="openDialog()">Update</button>
+      </mat-dialog-actions>
+    </mat-grid-tile>
+  <mat-grid-tile>
+      <app-list-states></app-list-states>
+  </mat-grid-tile>
+</mat-grid-list>

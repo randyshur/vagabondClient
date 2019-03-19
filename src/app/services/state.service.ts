@@ -10,7 +10,7 @@ const baseUrl = 'http://localhost:4050'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTUyNTY4OTIzLCJleHAiOjE1NTI2NTUzMjN9.dwveL9K6U6_rRCHmPV4q6JSbWeNM0RXna8oljb8nYxM'
+    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTUzMDA0MDg4LCJleHAiOjE1NTMwOTA0ODh9.yRPGjlDogfjpWzUoOdmVyO1A7Vy9QLLTpHMYU6Iqdjo'
   })
 };
 
@@ -20,47 +20,62 @@ const httpOptions = {
 export class StateService {
 
   constructor(private http: HttpClient) {}
+
+  //create state
+// createState(){
+//   return this.http.post(`${baseUrl}api/state/`)
+
+// }
+
+// post user state
 createState(){
-  // return this.http.post(`${baseUrl}api/state/`)
+    return this.http.post(`${baseUrl}/api/state/mystate/`, httpOptions)
+  
+  }
 
-}
-
-getUserStates(userId){
-  return this.http.get(`${baseUrl}/api/state/${userId}`)
+// get user states
+getUserStates(id){
+  return this.http.get(`${baseUrl}/api/state/mystates/${id}`, httpOptions)
 }
 
 //get all states
 
 getAllStates(){
-  return this.http.get(`${baseUrl}/api/state/`)
+  return this.http.get(`${baseUrl}/api/state/unique`, httpOptions)
 }
 
 //get all unique states
 getAllUnique(){
-  return this.http.get(`${baseUrl}/api/state/unique`)
+  return this.http.get(`${baseUrl}/api/state/unique`, httpOptions)
 }
 
 //get state by id for updating
 getState(id){
-  return this.http.get(`${baseUrl}/api/id/${id}`)
+  return this.http.get(`${baseUrl}/api/state/id/${id}`, httpOptions)
 
 }
 
 //update state by id
 
 updateState(id){
-  // return this.http.put(`${baseUrl}api/state/${id}`)
+  return this.http.put(`${baseUrl}/api/state/mystates/:id/${id}`, httpOptions)
 
 }
 
+// might be useful
 // updateState(id){
-//   this.http.put(`${baseUrl}api/state/${id}`)
+// return this.http.put(`${baseUrl}/api/state/`)
 // }
 
 
 //delete state by id
 
 deleteState(id){
-  return this.http.delete(`${baseUrl}/api/state/${id}`)
+  return this.http.delete(`${baseUrl}/api/state/mystates/:id/${id}`, httpOptions)
 
 }}
+
+
+
+
+
