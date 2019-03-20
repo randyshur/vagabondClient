@@ -120,7 +120,7 @@ export class CreateDialog {
     this.token=token
   }
 
-  onSubmit(){
+  onSubmit(form){
     console.log(this.landmarkForm.value)
   
     this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
@@ -174,7 +174,7 @@ export class UpdateDialog {
     this.token=token
   }
 
-  onSubmitUpdate(){
+  onSubmitUpdate(form){
     console.log(this.updateForm.value)
   
     this.landmarkService.updateLandmark(this.updateForm.value).subscribe(data => {

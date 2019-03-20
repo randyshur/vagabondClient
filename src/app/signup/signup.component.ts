@@ -101,12 +101,11 @@ export class SignUpComponent implements OnInit {
 
             }
             
+            
+               logout() {
+                   console.log('logged out')
+               }
         }
    
-
-//    logout() {
-//      this.authenticationService.logout();
-//      this.router.navigate(['/login']);
-//  }
 
    
