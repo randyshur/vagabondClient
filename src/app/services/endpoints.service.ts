@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/user'
+import { APIURL } from '../../environments/environment.prod';
 
-const baseUrl = 'http://localhost:4050'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,30 +22,30 @@ export class EndpointsService {
   //////USERS/////////////
 
   signup(user: User) {
-    return this.http.post(`${baseUrl}/api/user/signup`, user);
+    return this.http.post(`${APIURL}/api/user/signup`, user);
   }
 
   signin(user: User) {
-    return this.http.post(`${baseUrl}/api/user/signin`, user);
+    return this.http.post(`${APIURL}/api/user/signin`, user);
   }
 
   //update user by id
 
 
   updateUser(id){
-    // return this.http.put(`${baseUrl}api/user/${id}`)
+    // return this.http.put(`${APIURL}api/user/${id}`)
 
   }
 
   // updateUser(id){
-  //   this.http.put(`${baseUrl}api/user/${id}`)
+  //   this.http.put(`${APIURL}api/user/${id}`)
   // }
 
 
   //delete user by id
 
   deleteUser(id){
-    return this.http.delete(`${baseUrl}api/user/${id}`);
+    return this.http.delete(`${APIURL}api/user/${id}`);
 
   }
 
@@ -56,7 +56,7 @@ export class EndpointsService {
   
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}api/landmark/user/3`, httpOptions);
+    return this.http.get(`${APIURL}api/landmark/user/3`, httpOptions);
 
   }
 
@@ -64,20 +64,20 @@ export class EndpointsService {
   //create single landmark
 
   createLandmark(){
-    // return this.http.post(`${baseUrl}api/landmark/`)
+    // return this.http.post(`${APIURL}api/landmark/`)
 
   }
 
   // //create single landmark
   // createLandmark(){
-  //   this.http.post(`${baseUrl}api/landmark/`)
+  //   this.http.post(`${APIURL}api/landmark/`)
   // }
 
 
   //get single landmark by id for updating
 
   getUserLandmark(id){
-    return this.http.get(`${baseUrl}api/landmark/id/${id}`)
+    return this.http.get(`${APIURL}api/landmark/id/${id}`)
 
   }
 
@@ -85,20 +85,20 @@ export class EndpointsService {
   //update landmark by id
 
   updateLandmark(id){
-    // return this.http.put(`${baseUrl}api/landmark/${id}`)
+    // return this.http.put(`${APIURL}api/landmark/${id}`)
 
   }
 
   // //update landmark by id
   // updateLandmark(id){
-  //   this.http.put(`${baseUrl}api/landmark/${id}`)
+  //   this.http.put(`${APIURL}api/landmark/${id}`)
   // }
 
 
   //delete landmark by id
 
   deleteLandmark(id){
-    return this.http.delete(`${baseUrl}api/landmark/${id}`)
+    return this.http.delete(`${APIURL}api/landmark/${id}`)
 
   }
 

@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-
-//import { User } from '../models/user'
-
-const baseUrl = 'http://localhost:4050/api'
+import { APIURL } from '../../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,46 +16,46 @@ export class StateService {
 
   constructor(private http: HttpClient) {}
 createState(){
-  // return this.http.post(`${baseUrl}api/state/`)
+  // return this.http.post(`${APIURL}api/state/`)
 
 }
 
 getUserStates(userId){
-  return this.http.get(`${baseUrl}api/state/${userId}`)
+  return this.http.get(`${APIURL}api/state/${userId}`)
 }
 
 //get all states
 
 getAllStates(){
-  return this.http.get(`${baseUrl}api/state/`)
+  return this.http.get(`${APIURL}api/state/`)
 }
 
 //get all unique states
 getAllUnique(){
-  return this.http.get(`${baseUrl}api/state/unique`)
+  return this.http.get(`${APIURL}api/state/unique`)
 }
 
 //get state by id for updating
 getState(id){
-  return this.http.get(`${baseUrl}api/id/${id}`)
+  return this.http.get(`${APIURL}api/id/${id}`)
 
 }
 
 //update state by id
 
 updateState(id){
-  // return this.http.put(`${baseUrl}api/state/${id}`)
+  // return this.http.put(`${APIURL}api/state/${id}`)
 
 }
 
 // updateState(id){
-//   this.http.put(`${baseUrl}api/state/${id}`)
+//   this.http.put(`${APIURL}api/state/${id}`)
 // }
 
 
 //delete state by id
 
 deleteState(id){
-  return this.http.delete(`${baseUrl}api/state/${id}`)
+  return this.http.delete(`${APIURL}api/state/${id}`)
 
 }}
