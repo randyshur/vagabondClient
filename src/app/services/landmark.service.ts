@@ -18,33 +18,39 @@ const httpOptions = {
 })
 export class LandmarkService {
 
+  userLandmark: any
+
   constructor(private http: HttpClient) { }
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}/api/landmark/user`, httpOptions);
+    return this.http.get(`${baseUrl}/api/landmark/mylandmarks`, httpOptions);
   }
 
   //create single landmark
   createLandmark(form){
     console.log(form)
     JSON.stringify(form)
-    return this.http.post(`${baseUrl}/api/landmark/`, form, httpOptions)
+    return this.http.post(`${baseUrl}/api/landmark/mylandmark`, form, httpOptions)
 
   }
 
   //get single landmark by id for updating
   getUserLandmark(id){
-    return this.http.get(`${baseUrl}/api/landmark/id/${id}`, httpOptions)
-   }
+    this.http.get(`${baseUrl}/api/landmark/mylandmark/${id}`, httpOptions).subscribe(data => {
+      this.userLandmark=data['id']
+      
+   })}
 
   //update landmark by id
-  updateLandmark(id){
-    // return this.http.put(`${baseUrl}/api/landmark/${id}`)
+  updateLandmark(form){
+    console.log(form)
+    // console.log(id)
+    return this.http.put(`${baseUrl}/api/landmark/mylandmark/${this.userLandmark}`, form, httpOptions)
 
   }
 
   deleteLandmark(id){
-    return this.http.delete(`${baseUrl}/api/landmark/${id}`, httpOptions)
+    return this.http.delete(`${baseUrl}/api/landmark/mylandmark/${id}`, httpOptions)
   }
 }
