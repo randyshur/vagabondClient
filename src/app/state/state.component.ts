@@ -1,6 +1,6 @@
 import {Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
-import { EndpointsService } from '../services/endpoints.service';
+import { StateService } from '../services/state.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
@@ -17,32 +17,24 @@ export interface Tile {
   styleUrls: ['state.component.css'],
 })
 
-
-
-
 export class StateComponent implements OnInit {
-
-
-  searchForm: FormGroup;
-  baseUrl = 'http://localhost:4050/api/state'
-  _data = {};
 
   allStates: any
   userStates: any
   stateid: number
 
-  constructor(private endpointsservice: EndpointsService, private http:HttpClientModule, public dialog: MatDialog) {}
+  constructor(private StateService: StateService, private http:HttpClientModule, public dialog: MatDialog) {}
 
   ngOnInit() {
 
-    this.endpointsservice.getUserStates().subscribe(data => {
-      this.userStates=data;
-      console.log(this.userStates);
-    })
+    // this.StateService.getUserStates().subscribe(data => {
+    //   this.userStates=data;
+    //   console.log(this.userStates);
+    // })
   }
 
   deleteState(id){
-    this.endpointsservice.deleteState(id).subscribe(data => {
+    this.StateService.deleteState(id).subscribe(data => {
       console.log('state deleted');
     })
   }

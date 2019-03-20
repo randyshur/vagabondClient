@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { APIURL } from '../../environments/environment.prod';
 
-const baseUrl = 'http://localhost:4050'
+const token = localStorage.getItem('token')
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTUyNjU0ODA5LCJleHAiOjE1NTI3NDEyMDl9.9MVyd7iy5g4WXWXp0lEUDP0zijIKu4Ehdn6Rfv4tuso'
+    'Authorization': token
   })
 };
 
@@ -16,32 +17,39 @@ const httpOptions = {
 })
 export class LandmarkService {
 
+  userLandmark: any
+
   constructor(private http: HttpClient) { }
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${baseUrl}/api/landmark/user/2`, httpOptions);
+    return this.http.get(`${APIURL}/api/landmark/mylandmarks`, httpOptions);
   }
 
   //create single landmark
-  createLandmark(){
-    // return this.http.post(`${baseUrl}api/landmark/`)
+  createLandmark(form){
+    console.log(form)
+    JSON.stringify(form)
+    return this.http.post(`${APIURL}/api/landmark/mylandmark`, form, httpOptions)
 
   }
 
   //get single landmark by id for updating
   getUserLandmark(id){
-    return this.http.get(`${baseUrl}/api/landmark/id/${id}`, httpOptions)
-
-  }
+    this.http.get(`${APIURL}/api/landmark/mylandmark/${id}`, httpOptions).subscribe(data => {
+      this.userLandmark=data['id']
+      
+   })}
 
   //update landmark by id
-  updateLandmark(id){
-    // return this.http.put(`${baseUrl}/api/landmark/${id}`)
+  updateLandmark(form){
+    console.log(form)
+    // console.log(id)
+    return this.http.put(`${APIURL}/api/landmark/mylandmark/${this.userLandmark}`, form, httpOptions)
 
   }
 
   deleteLandmark(id){
-    return this.http.delete(`${baseUrl}/api/landmark/${id}`)
+    return this.http.delete(`${APIURL}/api/landmark/mylandmark/${id}`, httpOptions)
   }
 }
