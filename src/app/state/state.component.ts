@@ -17,15 +17,7 @@ export interface Tile {
   styleUrls: ['state.component.css'],
 })
 
-
-
-
 export class StateComponent implements OnInit {
-
-
-  searchForm: FormGroup;
-  baseUrl = 'http://localhost:4050/api/state'
-  _data = {};
 
   allStates: any
   userStates: any
