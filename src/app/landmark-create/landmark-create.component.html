@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Create Landmark</h2>
-<mat-dialog-content class="mat-typography">
+<!-- <mat-dialog-content class="mat-typography">
+    <h2 mat-dialog-title>Create Landmark</h2>
 <div class="formGroup">
   <form [formGroup]="landmarkForm" (ngSubmit)="onSubmit(landmarkForm.value)">
 
@@ -27,7 +27,6 @@
       </label>
       <br>
 
-    <div formGroupName="location">
       <h4>Location</h4>
     <label>
       Address:
@@ -43,14 +42,14 @@
       Zip:
       <input id="zip" type="text" formControlName="zip">
     </label>
-  </div>
-  
+
+    <label>
+      State:
+      <input id="state" type="text" formControlName="state">
+    </label>
+   
   <button type="submit" [disabled]="!landmarkForm.valid" >Submit</button>
 </form>
 </div>
 
-  <p>
-      Form Status: {{ landmarkForm.status }}
-    </p>
-
-</mat-dialog-content>
+</mat-dialog-content> -->

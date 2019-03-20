@@ -1,0 +1,55 @@
+<mat-dialog-content class="mat-typography">
+        <h2 mat-dialog-title>Create Landmark</h2>
+    <div class="formGroup">
+      <form [formGroup]="landmarkForm" (ngSubmit)="onSubmit(landmarkForm.value)">
+    
+        <label>
+          Title:
+          <input id="title" type="text" formControlName="title" required>
+          <div *ngIf="submitted && title.invalid" class="alert alert-danger">Please enter a title.</div>
+        </label>
+    
+        <label>
+            Date Last Visited:
+            <input id="date" type="date" formControlName="dateLastVisited" required>
+              <div *ngIf="submitted && date.invalid" class="alert alert-danger">
+            Please tell us when you visited.</div>
+          </label>
+      
+          <label>
+            Image URL:
+            <input id="imageURL" type="text" formControlName="imageURL">
+          </label>
+      
+          <label>
+            Comments:
+            <input id="comments" type="text" formControlName="comments">
+          </label>
+          <br>
+    
+          <h4>Location</h4>
+        <label>
+          Address:
+          <input id="address" type="text" formControlName="address">
+        </label>
+    
+        <label>
+          City:
+          <input id="city" type="text" formControlName="city">
+        </label>
+    
+        <label>
+          Zip:
+          <input id="zip" type="text" formControlName="zip">
+        </label>
+    
+        <label>
+          State:
+          <input id="state" type="number" formControlName="state">
+        </label>
+       
+      <button type="submit" [disabled]="!landmarkForm.valid" >Submit</button>
+    </form>
+    </div>
+    
+    <!-- </mat-dialog-content> -->
