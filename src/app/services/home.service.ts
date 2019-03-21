@@ -11,5 +11,5 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
 getAllLandmarks(){
-  return this.http.get(`${APIURL}/api/home/`)
+  return this.http.get(`${APIURL}api/home/`)
 }}
