@@ -26,9 +26,6 @@ export interface Tile {
   styleUrls: ['state.component.css'],
 })
 
-
-
-
 export class StateComponent implements OnInit {
   tiles: Tile[] = [
     {text: '', cols: 1, rows: 1, color: 'lightblue'},

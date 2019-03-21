@@ -25,7 +25,8 @@ import { UserComponent } from './user/user.component';
 import { StateComponent, CreateStateDialog, UpdateStateDialog } from './state/state.component';
 import { StateDropdownComponent } from './state-dropdown/state-dropdown.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
-import { LandmarkDisplayComponent, CreateDialog } from './landmark-display/landmark-display.component';
+// import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
+import { LandmarkDisplayComponent, CreateDialog, UpdateDialog } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -50,7 +51,7 @@ import { HomeService } from './services/home.service';
     LandmarkDisplayComponent,
     StateDropdownComponent,
     CreateDialog,
-
+    UpdateDialog
   ],
   imports: [
     AppRoutingModule,
@@ -78,7 +79,8 @@ import { HomeService } from './services/home.service';
     CreateStateDialog,
     UpdateStateDialog,
     LandmarkDisplayComponent,
-    CreateDialog
+    CreateDialog,
+    UpdateDialog
   ],
   providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
   bootstrap: [AppComponent]

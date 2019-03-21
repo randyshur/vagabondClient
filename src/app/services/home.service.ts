@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-const baseUrl = 'http://localhost:4050'
+import { APIURL } from '../../environments/environment.prod';
 
 const token = localStorage.getItem('token')
 
@@ -21,5 +20,5 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
 getAllLandmarks(){
-  return this.http.get(`${baseUrl}/api/home/`, httpOptions)
+  return this.http.get(`${APIURL}api/home/`)
 }}
