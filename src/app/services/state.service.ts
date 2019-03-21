@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APIURL } from '../../environments/environment.prod';
 
+const token = localStorage.getItem('token')
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    //'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTUyNTY4OTIzLCJleHAiOjE1NTI2NTUzMjN9.dwveL9K6U6_rRCHmPV4q6JSbWeNM0RXna8oljb8nYxM'
+    'Authorization': token
   })
 };
 
