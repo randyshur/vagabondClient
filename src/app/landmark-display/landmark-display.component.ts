@@ -37,18 +37,14 @@ export class LandmarkDisplayComponent implements OnInit {
   }
 
   getAll(){
+    // console.log(id)
     this.landmarkService.getUserLandmarks().subscribe(data => {
       console.log(data)
      this.userLandmarks=data
+     console.log(this.userLandmarks[0].state.userId)
     }
     )}
     
-      // getLandmark(id){
-      // this.landmarkService.getUserLandmark(id).subscribe(data => {
-      //   this.userLandmark=data;
-      //   console.log(this.userLandmark);
-      // })
-      // }
   deleteLandmark(id){
     this.landmarkService.deleteLandmark(id).subscribe(data => {
       console.log('deleted');
