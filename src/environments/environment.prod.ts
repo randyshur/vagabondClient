@@ -12,5 +12,5 @@ switch (window.location.hostname) {
         break;
     default:
         // this is the local host name of your API
-        APIURL = 'https://shur-vagabond-server.herokuapp.com/';
+        APIURL = 'http://localhost:4050';
 }
