@@ -65,23 +65,14 @@ export class LandmarkDisplayComponent implements OnInit {
     // this.data = this.dialogRef.componentInstance;
     console.log(id)
      this.landmarkService.getUserLandmark(id)
-    //  .subscribe(data => {
-    //    this.userLandmark=data['id'];
-      //  console.log(this.userLandmark.id);
-      //  this.userLandmark.id=this.userLandmark
-      //  console.log(this.userLandmark)
-    //  })
+    
      }
 
   openUpdateDialog(id) {
     this.getLandmark(id);
     
     this.dialog.open(UpdateDialog)
-      // ,{
-    // data:
-    // this.userLandmark
-    // }
-    // )
+    
   }
 }
 

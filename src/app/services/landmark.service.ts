@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APIURL } from '../../environments/environment.prod';
 
@@ -31,14 +30,12 @@ export class LandmarkService {
     console.log(form)
     JSON.stringify(form)
     return this.http.post(`${APIURL}api/landmark/mylandmark`, form, httpOptions)
-
   }
 
   //get single landmark by id for updating
   getUserLandmark(id){
     this.http.get(`${APIURL}api/landmark/mylandmark/${id}`, httpOptions).subscribe(data => {
       this.userLandmark=data['id']
-      
    })}
 
   //update landmark by id
@@ -46,7 +43,6 @@ export class LandmarkService {
     console.log(form)
     // console.log(id)
     return this.http.put(`${APIURL}api/landmark/mylandmark/${this.userLandmark}`, form, httpOptions)
-
   }
 
   deleteLandmark(id){
