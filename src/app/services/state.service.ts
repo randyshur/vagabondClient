@@ -9,6 +9,7 @@ const baseUrl = 'http://localhost:4050'
 
 const token = localStorage.getItem('token')
 
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -21,23 +22,17 @@ const httpOptions = {
 })
 export class StateService {
 
+  userState: any
+
   constructor(private http: HttpClient) {}
+createState(form){
+  JSON.stringify(form)
+  return this.http.post(`${baseUrl}/api/state/mystate`, form,  httpOptions)
 
-  //create state
-// createState(){
-//   return this.http.post(`${baseUrl}api/state/`)
+}
 
-// }
-
-// post user state
-createState(){
-    return this.http.post(`${baseUrl}/api/state/mystate/`, httpOptions)
-  
-  }
-
-// get user states
-getUserStates(id){
-  return this.http.get(`${baseUrl}/api/state/mystates/${id}`, httpOptions)
+getUserStates(userId){
+  return this.http.get(`${baseUrl}/api/state/mystate/${userId}`, httpOptions)
 }
 
 //get all states
@@ -53,31 +48,26 @@ getAllUnique(){
 
 //get state by id for updating
 getState(id){
-  return this.http.get(`${baseUrl}/api/state/id/${id}`, httpOptions)
+  return this.http.get(`${baseUrl}/api/mystate/:id/${id}`, httpOptions)
 
 }
 
 //update state by id
 
-updateState(id){
-  return this.http.put(`${baseUrl}/api/state/mystates/:id/${id}`, httpOptions)
-
-}
-
-// might be useful
 // updateState(id){
-// return this.http.put(`${baseUrl}/api/state/`)
+//   return this.http.put(`${baseUrl}api/state/${id}`)
+
 // }
+
+updateState(form){
+  console.log(form)
+  return this.http.put(`${baseUrl}/api/state/mystate/:id/${this.userState}`, form, httpOptions)
+}
 
 
 //delete state by id
 
 deleteState(id){
-  return this.http.delete(`${baseUrl}/api/state/mystates/:id/${id}`, httpOptions)
+  return this.http.delete(`${baseUrl}/api/state/mystate/${id}`, httpOptions)
 
 }}
-
-
-
-
-

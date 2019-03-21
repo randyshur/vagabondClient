@@ -21,7 +21,8 @@
 // }
 
 
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, OnChanges, SimpleChange, SimpleChanges, Input } from '@angular/core';
+import { StateService } from '../services/state.service';
 
 
 
@@ -39,8 +40,9 @@ export interface State {
   selector: 'app-list-states',
   templateUrl: './state-dropdown.component.html',
   })
-export class StateDropdownComponent {
-  states: State[] = [
+export class StateDropdownComponent implements OnChanges {
+  StateSelected: State;
+  @Input() states: State[] = [
     { name: 'ALABAMA', abbreviation: 'AL'},
     { name: 'ALASKA', abbreviation: 'AK'},
     { name: 'AMERICAN SAMOA', abbreviation: 'AS'},
@@ -107,7 +109,41 @@ export class StateDropdownComponent {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges() {}
+
+
+  nextState(): void{
+
+    
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // previousValue: any
+  // currentValue: any
+  // firstChange: boolean
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   console.log(changes);
+  //   const statesValue = changes['state selected'];
+  //   if (statesValue.currentValue === true) {
+  //     this.StateSelected='whatever selected';
+  //   } else {
+  //     this.StateSelected='No State Selected'
+  //   }
+  // }
+
+
+
 
 }

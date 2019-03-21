@@ -45,8 +45,19 @@ comments: {
 
 <h1>State of the Union</h1>
 
+<button mat-button (click)="openCreateStateDialog()">Create State</button>
+<mat-grid-list cols ="2" *ngFor="let state of userStates">
+  <mat-grid-tile-header><h2>{{state.state}}</h2></mat-grid-tile-header>
 
-<mat-grid-list cols="3" *ngFor="let state of userStates">
+  <mat-grid-tile><br>{{state.comments}}<br>{{state.dateLastVisited}}<br>
+  <button mat-button id={{state.id}} (click)="getState(state.id)">Update</button><br><button mat-button id={{state.id}} (click)="deleteState(state.id)">Delete</button>
+</mat-grid-tile>
+  <mat-grid-tile>
+    
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!-- <mat-grid-list cols="3" *ngFor="let state of userStates">
   <mat-grid-tile-header><h2>{{state.state}}</h2></mat-grid-tile-header>
   <mat-grid-tile>
     <mat-grid-tile-header><h3>{{state.comments}}</h3></mat-grid-tile-header>
@@ -60,7 +71,7 @@ comments: {
       <mat-grid-tile-header><h3>{{state.comments}}</h3></mat-grid-tile-header>
       <app-list-states></app-list-states>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
 
 
 

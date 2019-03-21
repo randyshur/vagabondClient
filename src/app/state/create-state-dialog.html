@@ -1,32 +1,29 @@
-<h1 mat-dialog-title>Update State</h1>
+<h1 mat-dialog-title>Create Landmark</h1>
 <mat-dialog-content>
     <div class="formGroup">
-        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate(updateForm.value)">
+        <form [formGroup]="stateForm" (ngSubmit)="onSubmit(stateForm.value)">
 
-          <label>
-            State:
-            <input id="state" type="text" formControlName="state">
-          </label>
-
+        
+            <label>
+                State:
+                <input id="state" type="text" formControlName="state">
+            </label>
 
             <label>
                 Date Last Visited:
-                <input id="date" type="date" formControlName="dateLastVisited">
+                <input id="date" type="date" formControlName="dateLastVisited" required>
                 <div *ngIf="submitted && date.invalid" class="alert alert-danger">
-                    Please tell us when you visited.</div>
+                    When did you visit this state??? SWEAR TO ME!!!</div>
             </label>
-
 
             <label>
                 Comments:
                 <input id="comments" type="text" formControlName="comments">
             </label>
-            <br>
-
 
 
             <mat-dialog-actions>
-                <button mat-button type="submit" [disabled]="!updateForm.valid">Submit</button>
+                <button mat-button type="submit" [disabled]="!stateForm.valid">Submit</button>
                 <button mat-button mat-dialog-close>Close</button>
             </mat-dialog-actions>
 

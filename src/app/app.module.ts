@@ -22,13 +22,12 @@ import { AdminComponent } from './admin/admin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
 import { UserComponent } from './user/user.component';
-import { StateComponent, StateComponentUpdate } from './state/state.component';
+import { StateComponent, CreateStateDialog, UpdateStateDialog } from './state/state.component';
+import { StateDropdownComponent } from './state-dropdown/state-dropdown.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
-import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 import { LandmarkDisplayComponent, CreateDialog } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
-import { StateDropdownComponent } from './state-dropdown/state-dropdown.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AlertService } from './services/alert.service';
 import { HomeService } from './services/home.service';
@@ -45,10 +44,10 @@ import { HomeService } from './services/home.service';
     SignInComponent,
     UserComponent,
     StateComponent,
-    StateComponentUpdate,
+    CreateStateDialog,
+    UpdateStateDialog,
     LandmarkEditComponent,
     LandmarkDisplayComponent,
-    LandmarkCreateComponent,
     StateDropdownComponent,
     CreateDialog,
 
@@ -76,7 +75,8 @@ import { HomeService } from './services/home.service';
   ],
   entryComponents: [
     StateComponent,
-    StateComponentUpdate,
+    CreateStateDialog,
+    UpdateStateDialog,
     LandmarkDisplayComponent,
     CreateDialog
   ],
