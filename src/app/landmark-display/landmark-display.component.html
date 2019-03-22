@@ -8,11 +8,11 @@
   </mat-grid-tile-header>
 
   <mat-grid-tile>
-    <img src={{userLandmark.imageURL}} />
+    <img class="landmarkImg" src={{userLandmark.imageURL}} />
   </mat-grid-tile>
 
   <mat-grid-tile>
-    <br>{{userLandmark.address}}<br>{{userLandmark.city}}<br>{{userLandmark.comments}}<br>{{userLandmark.dateLastVisited}}
+    <br>{{userLandmark.address}}<br>{{userLandmark.city}}<br>{{userLandmark.comments}}<br>{{userLandmark.dateLastVisited | date}}
   </mat-grid-tile>
 
   <mat-grid-tile>

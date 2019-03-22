@@ -1,13 +1,14 @@
 <mat-toolbar color="warn">
-  <span class="titleFont">Vagabond</span>
+  <span class=""><img src="./assets/vagabond.png" style="height: 50px;"></span>
 
-  <span class="example-fill-remaining-space"></span>
+  <span class="example-fill-remaining-space titleFont">Vagabond ({{this.user.id}} - {{this.user.username}})</span>
 
- <span>
-  <a routerLink="/home"><Button class="HomeButton">Home</Button></a>
-  <a routerLink="/landmark"><Button class="LandmarksButton">Landmarks</Button></a>
-  <a routerLink="/state"><Button class="LandmarksButton">States</Button></a>
-  <a routerLink="/signin"><Button class="LoginButton">Login</Button></a>
-  <a routerLink="/signup"><Button class="SignupButton">Signup</Button></a>
-</span>
+  <span>
+    <a routerLink="/home"><Button class="HomeButton">Home</Button></a>
+    <a routerLink="/state"><Button class="LandmarksButton">States</Button></a>
+    <a routerLink="/landmark"><Button class="LandmarksButton">Landmarks</Button></a>
+    <a routerLink="/admin"><Button class="AdminButton">Admin</Button></a>
+    <a routerLink="/signin"><Button class="LoginButton">Login</Button></a>
+    <a routerLink="/signup"><Button class="SignupButton">Signup</Button></a>
+  </span>
 </mat-toolbar>
