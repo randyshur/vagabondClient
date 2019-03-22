@@ -4,7 +4,6 @@ import { StateService } from '../services/state.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { StateDropdownComponent } from '../state-dropdown/state-dropdown.component';
 
 export interface Tile {
   color: string;
@@ -43,7 +42,7 @@ export class StateComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getAllStates()
+    this.getUserStates()
     this.setToken()
  
   }
@@ -53,10 +52,10 @@ export class StateComponent implements OnInit {
     this.token=token
   }
 
-  getAllStates(){
-    this.stateService.getAllStates().subscribe(data => {
+  getUserStates(){
+    this.stateService.getUserStates().subscribe(data => {
       this.userStates=data
-      console.log(data)
+      console.log("create =>", data)
     })
   }
 
@@ -72,14 +71,14 @@ export class StateComponent implements OnInit {
     console.log(id)
     this.stateService.deleteState(id).subscribe(data => {
       this.userState=data;
-      this.getAllStates()
+      this.getUserStates()
     })
   }
 
   getState(id){
-    this.stateService.getUserStates(id).subscribe(data => {
+    this.stateService.getState(id).subscribe(data => {
       this.userState=data;
-      this.getAllStates()
+      this.getUserStates()
       console.log(this.userState);
     })
   }
@@ -114,9 +113,7 @@ openUpdateStateDialog(id) {
 })
 export class CreateStateDialog {
 
-  userState: any
   userStates: any
-  userid: number
   token: any
   stateForm: FormGroup
 
@@ -126,15 +123,13 @@ export class CreateStateDialog {
   
  ngOnInit() {
    this.setToken()
-   this.getAllStates()
+   this.getUserStates()
 
    this.stateForm= new FormGroup({
      state: new FormControl(),
      dateLastVisited: new FormControl(),
      comments: new FormControl()
    })
-
-   this.getAllStates()
  }
 
 
@@ -144,35 +139,36 @@ export class CreateStateDialog {
   }
 
 
-  getAllStates(){
-    this.stateService.getAllStates().subscribe(data => {
+  getUserStates(){
+    this.stateService.getUserStates().subscribe(data => {
       this.userStates=data
-      console.log(data)
+      console.log(data) //here
     })
   }
 
   onSubmit(){
     console.log(this.stateForm.value)
    this.stateService.createState(this.stateForm.value).subscribe(data => {
-     this.userState=data
-     this.getAllStates()
-   })
-    
+     this.userStates=data;
+     this.getUserStates()
+    })
     this.closeDialog()
   }
-
 
 
   // deleteState(id){
   //   console.log(id)
   //   this.stateService.deleteState(id).subscribe(data => {
   //     this.userState=data;
-  //     this.getAllStates()
+  //     this.getUserStates()
   //   })
   // }
 
+
   closeDialog(){
     this.dialog.closeAll();
+    this.getUserStates();
+    console.log('dialog closing')
   }
 }
 
@@ -184,18 +180,16 @@ export class CreateStateDialog {
 })
 export class UpdateStateDialog {
 
-  userState: any
   userStates: any
-  userid: number
   token: any
   updateForm: FormGroup
 
 
-  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public stateDropDown: StateDropdownComponent) { }
+  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA)private stateService: StateService) { }
 
   ngOnInit() {
     this.setToken()
-    this.getAllStates()
+    this.getUserStates()
 
 
   this.updateForm = new FormGroup({
@@ -207,16 +201,16 @@ export class UpdateStateDialog {
 
 
   getState(id){
-    this.stateService.getUserStates(id).subscribe(data => {
-      this.userState=data;
-      this.getAllStates()
-      console.log(this.userState);
+    this.stateService.getState(id).subscribe(data => {
+      this.userStates=data;
+      this.getUserStates()
+      console.log(this.userStates);
     })
   }
 
 
-  getAllStates(){
-    this.stateService.getAllStates().subscribe(data => {
+  getUserStates(){
+    this.stateService.getUserStates().subscribe(data => {
       this.userStates=data
       console.log(data)
     })
@@ -227,13 +221,13 @@ export class UpdateStateDialog {
     this.token=token
   }
 
-  onSubmitUpdate(){
-    console.log(this.updateForm.value)
+  onSubmitUpdate(id){
+    this.getState(id)
 
     this.stateService.updateState(this.updateForm.value).subscribe(data => {
       this.userStates=data
       console.log(data);
-      this.getAllStates()
+      this.getUserStates()
     })
     this.closeDialog()
   }

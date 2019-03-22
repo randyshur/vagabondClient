@@ -50,7 +50,7 @@ comments: {
   <mat-grid-tile-header><h2>{{state.state}}</h2></mat-grid-tile-header>
 
   <mat-grid-tile><br>{{state.comments}}<br>{{state.dateLastVisited}}<br>
-  <button mat-button id={{state.id}} (click)="getState(state.id)">Update</button><br><button mat-button id={{state.id}} (click)="deleteState(state.id)">Delete</button>
+  <button mat-button id={{state.id}} (click)="openUpdateStateDialog(state.id)">Update</button><br><button mat-button id={{state.id}} (click)="deleteState(state.id)">Delete</button>
 </mat-grid-tile>
   <mat-grid-tile>
     

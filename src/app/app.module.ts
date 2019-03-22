@@ -23,7 +23,6 @@ import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
 import { UserComponent } from './user/user.component';
 import { StateComponent, CreateStateDialog, UpdateStateDialog } from './state/state.component';
-import { StateDropdownComponent } from './state-dropdown/state-dropdown.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 // import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 import { LandmarkDisplayComponent, CreateDialog, UpdateDialog } from './landmark-display/landmark-display.component';
@@ -49,7 +48,6 @@ import { HomeService } from './services/home.service';
     UpdateStateDialog,
     LandmarkEditComponent,
     LandmarkDisplayComponent,
-    StateDropdownComponent,
     CreateDialog,
     UpdateDialog
   ],

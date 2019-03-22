@@ -20,52 +20,45 @@ export class StateService {
   constructor(private http: HttpClient) {}
 createState(form){
   JSON.stringify(form)
-  return this.http.post(`${APIURL}/api/state/mystate`, form,  httpOptions)
+  return this.http.post(`${APIURL}api/state/mystate`, form,  httpOptions)
 
 
 }
 
-getUserStates(userId){
-  return this.http.get(`${APIURL}api/state/${userId}`)
+getUserStates(){
+  return this.http.get(`${APIURL}api/state/mystates/`, httpOptions)
 }
 
 //get all states
 
 getAllStates(){
-  return this.http.get(`${APIURL}api/state/`)
+  return this.http.get(`${APIURL}api/state/`, httpOptions)
 }
 
 //get all unique states
 getAllUnique(){
-  return this.http.get(`${APIURL}api/state/unique`)
+  return this.http.get(`${APIURL}api/state/unique`, httpOptions)
 }
 
 //get state by id for updating
 getState(id){
-  return this.http.get(`${APIURL}api/id/${id}`)
+  return this.http.get(`${APIURL}api/state/mystate/${id}`, httpOptions)
 
 }
 
-//update state by id
-
-// updateState(id){
-//   // return this.http.put(`${APIURL}api/state/${id}`)
-
-// }
-
-// updateState(id){
-//   this.http.put(`${APIURL}api/state/${id}`)
-// }
-
 updateState(form){
   console.log(form)
-  return this.http.put(`${APIURL}/api/state/mystate/:id/${this.userState}`, form, httpOptions)
+  return this.http.put(`${APIURL}api/state/mystate/:id/${this.userState}`, form, httpOptions)
 }
 
 
 //delete state by id
 
 deleteState(id){
-  return this.http.delete(`${APIURL}api/state/${id}`)
+  return this.http.delete(`${APIURL}api/state/mystate/${id}`, httpOptions)
+  // return this.http.delete(`http://localhost:4050/api/state/${id}`)
 
 }}
+
+
+// http://localhost:4050/
