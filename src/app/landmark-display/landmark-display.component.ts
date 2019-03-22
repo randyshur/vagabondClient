@@ -1,10 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
-import { HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { MatDialog, MAT_DIALOG_DATA, MatButton, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { APIURL } from 'src/environments/environment.prod';
 import { } from 'rxjs/add/operator/toPromise'
 
 export interface DialogData {
@@ -42,7 +41,6 @@ export class LandmarkDisplayComponent implements OnInit {
     this.landmarkService.getUserLandmarks().subscribe(data => {
       console.log(data)
      this.userLandmarks=data
-     
     }
     )}
     
@@ -57,15 +55,7 @@ export class LandmarkDisplayComponent implements OnInit {
     this.dialog.open(CreateDialog);
   }
 
-  // getLandmark(id){
-  //   console.log(id)
-  //    this.landmarkService.getUserLandmark(id)
-  //    this.userLandmark=this.landmarkService.userLandmark
-  //    console.log(this.userLandmark)
-  // }
-
   openUpdateDialog(id) {
-    // console.log(id)
      this.landmarkService.getUserLandmark(id)
     console.log(this.landmarkService.userLandmark)
 
@@ -73,7 +63,6 @@ export class LandmarkDisplayComponent implements OnInit {
     dialogConfig.data= this.landmarkService.userLandmark
     
     this.dialog.open(UpdateDialog)
-     
   }
 }
 
@@ -114,10 +103,11 @@ export class CreateDialog {
 
   onSubmit(){
     console.log(this.landmarkForm.value)
-  
+
     this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
       console.log(data);
     })
+
     this.closeDialog()
   }
 
@@ -130,7 +120,6 @@ export class CreateDialog {
 @Component({
   selector: 'update-dialog',
   templateUrl: 'update-dialog.html',
-  // template: '{{ userLandmark.id }}'
 })
 export class UpdateDialog {
 
@@ -139,26 +128,11 @@ export class UpdateDialog {
   userId: any
   token: any
   updateForm: FormGroup
-  // data: any
 
-  
-  
   constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any  ) { }
   
   ngOnInit() {
     this.setToken()
-    // let promise = new Promise((resolve, reject) => {
-    //   this.landmarkService.getUpdateItem()
-    //   .toPromise()
-    //   .then(
-    //     res => {
-    //       console.log(res)
-    //       resolve()
-    //     }
-    //   )
-    //   return promise;
-
-    // })
 
     this.updateForm = new FormGroup({
       title: new FormControl(),
@@ -218,15 +192,7 @@ export class UpdateDialog {
     this.closeDialog()
   }
 
-  // getLandmark(id){
-  //   // this.data = this.dialogRef.componentInstance;
-  //    this.landmarkService.getUserLandmark(this.data).subscribe(data => {
-  //      this.userLandmark=data;
-  //      console.log(this.userLandmark);
-  //    })
-  //    }
-
   closeDialog(){
-    const dialogRef = this.dialog.closeAll();
+    this.dialog.closeAll();
   }
 }
