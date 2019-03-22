@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
-import { HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { MatDialog, MAT_DIALOG_DATA, MatButton, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { } from 'rxjs/add/operator/toPromise'
 
 export interface DialogData {
   userLandmark
@@ -37,11 +38,9 @@ export class LandmarkDisplayComponent implements OnInit {
   }
 
   getAll(){
-    // console.log(id)
     this.landmarkService.getUserLandmarks().subscribe(data => {
       console.log(data)
      this.userLandmarks=data
-     console.log(this.userLandmarks[0].state.userId)
     }
     )}
     
@@ -54,30 +53,16 @@ export class LandmarkDisplayComponent implements OnInit {
 
   openCreateDialog() {
     this.dialog.open(CreateDialog);
-
   }
 
-  getLandmark(id){
-    // this.data = this.dialogRef.componentInstance;
-    console.log(id)
-     this.landmarkService.getUserLandmark(id)
-    //  .subscribe(data => {
-    //    this.userLandmark=data['id'];
-      //  console.log(this.userLandmark.id);
-      //  this.userLandmark.id=this.userLandmark
-      //  console.log(this.userLandmark)
-    //  })
-     }
-
   openUpdateDialog(id) {
-    this.getLandmark(id);
+     this.landmarkService.getUserLandmark(id)
+    console.log(this.landmarkService.userLandmark)
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data= this.landmarkService.userLandmark
     
     this.dialog.open(UpdateDialog)
-      // ,{
-    // data:
-    // this.userLandmark
-    // }
-    // )
   }
 }
 
@@ -118,10 +103,11 @@ export class CreateDialog {
 
   onSubmit(){
     console.log(this.landmarkForm.value)
-  
+
     this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
       console.log(data);
     })
+
     this.closeDialog()
   }
 
@@ -134,7 +120,6 @@ export class CreateDialog {
 @Component({
   selector: 'update-dialog',
   templateUrl: 'update-dialog.html',
-  // template: '{{ userLandmark.id }}'
 })
 export class UpdateDialog {
 
@@ -143,15 +128,11 @@ export class UpdateDialog {
   userId: any
   token: any
   updateForm: FormGroup
-  // data: any
 
-  
-  
   constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any  ) { }
   
   ngOnInit() {
     this.setToken()
-    // this.getLandmark()
 
     this.updateForm = new FormGroup({
       title: new FormControl(),
@@ -171,6 +152,38 @@ export class UpdateDialog {
   }
 
   onSubmitUpdate(){
+    if(this.updateForm.value.title === null){
+      delete this.updateForm.value.title
+    }
+
+    if(this.updateForm.value.dateLastVisited === null){
+      delete this.updateForm.value.dateLastVisited
+    }
+
+    if(this.updateForm.value.imageURL === null){
+      delete this.updateForm.value.imageURL
+    }
+
+    if(this.updateForm.value.comments === null){
+      delete this.updateForm.value.comments
+    }
+
+    if(this.updateForm.value.address === null){
+      delete this.updateForm.value.address
+    }
+
+    if(this.updateForm.value.city === null){
+      delete this.updateForm.value.city
+    }
+
+    if(this.updateForm.value.zip === null){
+      delete this.updateForm.value.zip
+    }
+
+    if(this.updateForm.value.state === null){
+      delete this.updateForm.value.state
+    }
+
     console.log(this.updateForm.value)
   
     this.landmarkService.updateLandmark(this.updateForm.value).subscribe(data => {
@@ -179,15 +192,7 @@ export class UpdateDialog {
     this.closeDialog()
   }
 
-  // getLandmark(id){
-  //   // this.data = this.dialogRef.componentInstance;
-  //    this.landmarkService.getUserLandmark(this.data).subscribe(data => {
-  //      this.userLandmark=data;
-  //      console.log(this.userLandmark);
-  //    })
-  //    }
-
   closeDialog(){
-    const dialogRef = this.dialog.closeAll();
+    this.dialog.closeAll();
   }
 }

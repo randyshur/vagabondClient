@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { HomeDisplayComponent } from './home/home-display.component';
 
 import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
@@ -41,7 +40,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavbarComponent,
     PageNotFoundComponent,
     HomeComponent,
-    HomeDisplayComponent,
     SignUpComponent,
     SignInComponent,
     UserComponent,
