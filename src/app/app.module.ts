@@ -17,18 +17,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDisplayComponent } from './home/home-display.component';
-import { AdminComponent } from './admin/admin.component';
+
 import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
 import { UserComponent } from './user/user.component';
 import { StateComponent, StateComponentUpdate } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
-// import { LandmarkCreateComponent } from './landmark-create/landmark-create.component';
 import { LandmarkDisplayComponent, CreateDialog, UpdateDialog } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
 import { EndpointsService } from './services/endpoints.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AlertService } from './services/alert.service';
+
+import { AdminModule }  from './admin/admin.module';
+import { AuthModule }              from './auth/auth.module';
 import { HomeService } from './services/home.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -40,7 +42,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PageNotFoundComponent,
     HomeComponent,
     HomeDisplayComponent,
-    AdminComponent,
     SignUpComponent,
     SignInComponent,
     UserComponent,
@@ -52,7 +53,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     UpdateDialog
   ],
   imports: [
-    AppRoutingModule,
+
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -67,9 +68,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatButtonModule,
     MatNativeDateModule,
     MatToolbarModule,
-    AppRoutingModule,
     MatNativeDateModule,
-    // CreateDialog
+    AuthModule,
+    AdminModule,
+    AppRoutingModule
+
   ],
   entryComponents: [
     StateComponent,
