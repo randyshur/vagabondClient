@@ -1,18 +1,18 @@
 <h1 mat-dialog-title>Create Landmark</h1>
 <mat-dialog-content>
     <div class="formGroup">
-        <form [formGroup]="landmarkForm" (ngSubmit)="onSubmit(landmarkForm.value)">
+        <form [formGroup]="landmarkForm" (ngSubmit)="onSubmit()">
 
             <label>
                 Title:
                 <input id="title" type="text" formControlName="title" required>
-                <div *ngIf="submitted && title.invalid" class="alert alert-danger">Please enter a title.</div>
+                <div class="alert alert-danger">Please enter a title.</div>
             </label>
 
             <label>
                 Date Last Visited:
                 <input id="date" type="date" formControlName="dateLastVisited" required>
-                <div *ngIf="submitted && date.invalid" class="alert alert-danger">
+                <div  class="alert alert-danger">
                     Please tell us when you visited.</div>
             </label>
 
