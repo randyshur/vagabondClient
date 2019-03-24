@@ -1,3 +1,32 @@
 .example-fill-remaining-space {
   flex: 1 1 auto;
 }
+
+.navTitle{
+  font-family: 'dolce_vitaquite_regular';
+  color: white;
+  font-size: 50px;
+}
+
+.nav{
+  height: 95px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:5;
+  background-color: rgb(38, 124, 38);
+}
+
+@font-face {
+  font-family: 'dolce_vitaquite_regular';
+  src: url('../../assets/dolce_vita-webfont.woff2') format('woff2'),
+       url('../../assets/dolce_vita-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navButton{
+color: white;
+font-family: 'dolce_vitaquite_regular';
+font-size: 17px;
+}
