@@ -1,23 +1,29 @@
-<h1>Landmark Display</h1>
 
-<button mat-button (click)="openCreateDialog()">Create New Landmark</button>
-<mat-grid-list cols="3" *ngFor="let userLandmark of userLandmarks">
+<div class="body">
+<div *ngIf="!this.userLandmarks"><h1>You don't have any landmarks. Would you like to create one?</h1></div>
 
-  <mat-grid-tile-header>
-    <h2>{{userLandmark.title}}</h2>
+<button mat-button (click)="openCreateDialog()" id="createButton">Create New Landmark</button>
+<br>
+<br>
+<mat-grid-list cols="4" *ngFor="let userLandmark of userLandmarks">
+
+  <mat-grid-tile-header class="text-center">
+    <h2 class="titleFont">{{userLandmark.title}}</h2>
   </mat-grid-tile-header>
 
-  <mat-grid-tile>
+  <mat-grid-tile colspan="2">
     <img class="landmarkImg" src={{userLandmark.imageURL}} />
   </mat-grid-tile>
 
-  <mat-grid-tile>
+  <mat-grid-tile class="bodyFont">
     <br>{{userLandmark.address}}<br>{{userLandmark.city}}<br>{{userLandmark.comments}}<br>{{userLandmark.dateLastVisited | date}}
   </mat-grid-tile>
 
   <mat-grid-tile>
     <button mat-button id=userLandmark.id (click)="openUpdateDialog(userLandmark.id)">edit</button>
+
     <button mat-button id={{userLandmark.id}} (click)="deleteLandmark(userLandmark.id)">delete</button>
   </mat-grid-tile>
 
 </mat-grid-list>
+</div>

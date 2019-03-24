@@ -32,6 +32,7 @@ import { AdminModule }  from './admin/admin.module';
 import { AuthModule }              from './auth/auth.module';
 import { HomeService } from './services/home.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
 
@@ -79,7 +80,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CreateDialog,
     UpdateDialog
   ],
-  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
+  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
