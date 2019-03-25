@@ -1,3 +1,48 @@
-.StateGrid {
-    background-color: green;
+
+
+button{
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    background: #EDAB65;
+    margin: 5px;
 }
+
+#createButton{
+    font-size: 35px;
+    background-color: #EDAB65;
+    font-family: 'Barlow Condensed', sans-serif;
+    padding: 5px;
+    display: inline-flex;
+    float: right !important;
+    margin-right: 2em;
+    margin-top: 2em;
+}
+
+.body{
+    background-image: url('../../assets/ben_punja.jpg') !important;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100vh;
+    overflow-y: hidden;
+    margin-top: 5em;
+}
+
+
+mat-card-content {
+    font-family: 'Barlow Condensed', sans-serif;
+
+}
+
+mat-card {
+    float: left;
+    display: flex;
+    margin: 5em;
+}
+
+h1 {
+    
+}
+
+

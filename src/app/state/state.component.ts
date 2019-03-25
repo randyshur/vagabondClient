@@ -75,13 +75,12 @@ export class StateComponent implements OnInit {
     })
   }
 
-  getState(id){
-    this.stateService.getState(id).subscribe(data => {
-      this.userState=data;
-      this.getUserStates()
-      console.log(this.userState);
-    })
-  }
+  // getState(id){
+  //   // this.stateService.getState(id).subscribe(data => {
+  //   //   this.userState=data;
+  //     console.log(this.userState);
+  //   })
+  // }
 
   
 
@@ -95,8 +94,12 @@ openCreateStateDialog() {
 }
 
 openUpdateStateDialog(id) {
-  this.getState(id);
-  this.dialog.open(UpdateStateDialog)
+  this.stateService.getState(id)
+  console.log(id)
+  const dialogRef=this.dialog.open(UpdateStateDialog)
+  dialogRef.afterClosed().subscribe(results => {
+    this.getUserStates()
+  })
 }
 
 
@@ -199,11 +202,10 @@ export class UpdateStateDialog {
   updateForm: FormGroup
 
 
-  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA)private stateService: StateService) { }
+  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private stateService: StateService) { }
 
   ngOnInit() {
     this.setToken()
-    this.getUserStates()
 
 
   this.updateForm = new FormGroup({
@@ -214,13 +216,13 @@ export class UpdateStateDialog {
   } 
 
 
-  getState(id){
-    this.stateService.getState(id).subscribe(data => {
-      this.userStates=data;
-      this.getUserStates()
-      console.log(this.userStates);
-    })
-  }
+  // getState(id){
+  //   this.stateService.getState(id).subscribe(data => {
+  //     this.userStates=data;
+  //     this.getUserStates()
+  //     console.log(this.userStates);
+  //   })
+  // }
 
 
   getUserStates(){
@@ -236,21 +238,14 @@ export class UpdateStateDialog {
   }
 
   onSubmitUpdate(){
-
+    console.log(this.updateForm.value)
     this.stateService.updateState(this.updateForm.value).subscribe(data => {
       this.userStates=data
       console.log(data);
-      this.getUserStates()
     })
     this.closeDialog()
   }
 
-
-
-  openUpdateStateDialog(id) {
-    this.getState(id);
-    this.dialog.open(UpdateStateDialog)
-  }
 
 
 

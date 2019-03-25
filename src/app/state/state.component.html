@@ -1,78 +1,25 @@
-<!-- <app-list-states></app-list-states> -->
+<div class="body">
 
-<!-- <mat-dialog-actions>
-  <button mat-button (click)="deleteState()">Delete</button>
-<button mat-button (click)="openDialog()">Update</button>
-</mat-dialog-actions> -->
-<!-- <mat-grid-list *ngIf="userStates" class="StateGrid" cols="2" rowHeight="2:1">
-  <mat-grid-tile>
-    <P>State</P>
-    <p>Comments</p>
-    <p>Date last visited</p>
-    
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <p>something something that displays data</p>
-  </mat-grid-tile>
-</mat-grid-list> -->
+<h1>States of the Union</h1>
 
+<div *ngIf="!this.userStates"><h1>You don't have any states. Would like to create one?</h1></div>
 
+<button id="createButton" mat-button (click)="openCreateStateDialog()" id="createStateButton">Add A State</button>
+<br>
+<br>
+<div *ngFor="let state of userStates">
+<mat-card>
 
+  <mat-card-title class="text-center"><h2 class="stateTitle">{{state.state}}</h2> </mat-card-title>
 
-<!-- <mat-grid-tile
-  *ngFor="let tile of tiles"
-  [colspan]="tile.cols"
-  [rowspan]="tile.rows"
-  [style.background]="tile.color">
-  {{tile.text}}
-</mat-grid-tile> -->
+    <mat-card-content>
+      <p class="stateDate">{{state.dateLastVisited | date}}</p>
+      <p class="stateComments">{{state.comments}}</p>
+    </mat-card-content>
 
-
-<!-- 
-
-state: {
-  type: Sequelize.STRING,
-  allowNull: false
-},
-dateLastVisited: {
-  type: Sequelize.DATE,
-  field: 'date_last_visited',
-  allowNull: true
-},
-comments: {
-  type: Sequelize.TEXT,
-  allowNull: true -->
-
-<h1>State of the Union</h1>
-
-<button mat-button (click)="openCreateStateDialog()">Create State</button>
-<mat-grid-list cols ="2" *ngFor="let state of userStates">
-  <mat-grid-tile-header><h2>{{state.state}}</h2></mat-grid-tile-header>
-
-  <mat-grid-tile><br>{{state.comments}}<br>{{state.dateLastVisited}}<br>
-  <button mat-button id={{state.id}} (click)="openUpdateStateDialog(state.id)">Update</button><br><button mat-button id={{state.id}} (click)="deleteState(state.id)">Delete</button>
-</mat-grid-tile>
-  <mat-grid-tile>
-    
-  </mat-grid-tile>
-</mat-grid-list>
-
-<!-- <mat-grid-list cols="3" *ngFor="let state of userStates">
-  <mat-grid-tile-header><h2>{{state.state}}</h2></mat-grid-tile-header>
-  <mat-grid-tile>
-    <mat-grid-tile-header><h3>{{state.comments}}</h3></mat-grid-tile-header>
-    <mat-dialog-actions>
-        <button mat-button (click)="deleteState()">Delete</button>
-      <button mat-button (click)="openDialog()">Update</button>
-      </mat-dialog-actions>
-      <h3>{{state.dateLastVisited}}</h3>
-    </mat-grid-tile>
-  <mat-grid-tile>
-      <mat-grid-tile-header><h3>{{state.comments}}</h3></mat-grid-tile-header>
-      <app-list-states></app-list-states>
-  </mat-grid-tile>
-</mat-grid-list> -->
-
-
-
-
+    <mat-card-actions id="updateDeleteButton">
+      <button mat-button (click)="openUpdateStateDialog(state.id)">Update State</button>
+      <button mat-button  (click)="deleteState(state.id)">Delete State</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

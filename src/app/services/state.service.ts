@@ -42,13 +42,14 @@ getAllUnique(){
 
 //get state by id for updating
 getState(id){
-  return this.http.get(`${APIURL}api/state/mystate/${id}`, httpOptions)
-
-}
+ this.http.get(`${APIURL}api/state/mystate/${id}`, httpOptions).subscribe(data => {
+    this.userState=data;
+console.log(this.userState)
+})}
 
 updateState(form){
   console.log(form)
-  return this.http.put(`${APIURL}api/state/mystate/:id/${this.userState}`, form, httpOptions)
+  return this.http.put(`${APIURL}api/state/mystate/${this.userState.id}`, form, httpOptions)
 }
 
 
