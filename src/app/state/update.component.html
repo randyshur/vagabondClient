@@ -2,24 +2,28 @@
 <h1 mat-dialog-title>Update State</h1>
 <mat-dialog-content>
     <div class="formGroup">
+
         <form [formGroup]="updateForm" novalidate (ngSubmit)="onSubmitUpdate(updateForm.value)">
+
 
             <mat-form-field style="width:350px !important">
                 State:
-                <input  matInput id="state" type="text" formControlName="state" required>
+
+                <input  matInput id="state" type="text" formControlName="state" required  value={{this.stateService.userState.state}}>
                 <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field style="width:350px !important">
                 Date Last Visited:
-                <input matInput id="date" type="date" formControlName="dateLastVisited" >
+                <input matInput id="date" type="date" formControlName="dateLastVisited" value={{this.stateService.userState.dateLastVisited}} >
             </mat-form-field>
             <br>
             <mat-form-field style="width:350px !important">
                 Comments:
-                <input matInput id="comments" type="text" formControlName="comments">
+                <input matInput id="comments" type="text" formControlName="comments" value={{this.stateService.userState.comments}}>
             </mat-form-field>
             <br>
+
 
             <mat-dialog-actions>
                 <button mat-button type="submit" [disabled]="!updateForm.valid">Submit</button>
