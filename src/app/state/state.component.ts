@@ -5,11 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+export interface DialogData {
+  userState
 }
 
 
@@ -26,10 +23,7 @@ export interface Tile {
 })
 
 export class StateComponent implements OnInit {
-  tiles: Tile[] = [
-    {text: '', cols: 1, rows: 1, color: 'lightblue'},
-    {text: '', cols: 1, rows: 1, color: 'lightgreen'},
-  ];
+ 
 
   userState: any
   userStates: any
@@ -76,8 +70,8 @@ export class StateComponent implements OnInit {
   }
 
   // getState(id){
-  //   // this.stateService.getState(id).subscribe(data => {
-  //   //   this.userState=data;
+  //   this.stateService.getState(id).subscribe(data => {
+  //     this.userState=data;
   //     console.log(this.userState);
   //   })
   // }
@@ -99,6 +93,9 @@ openUpdateStateDialog(id) {
   const dialogRef=this.dialog.open(UpdateStateDialog)
   dialogRef.afterClosed().subscribe(results => {
     this.getUserStates()
+
+    const dialogConfig = new MatDialogConfig();
+   dialogConfig.data = this.stateService.userState
   })
 }
 
