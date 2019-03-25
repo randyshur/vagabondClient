@@ -5,7 +5,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
 
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
 
-  { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'user', component: UserComponent },
 

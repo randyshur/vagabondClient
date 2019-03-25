@@ -1,13 +1,14 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { } from 'rxjs/add/operator/toPromise'
+import  { Router } from '@angular/router'
 
 export interface DialogData {
   userLandmark
+  userLandmarks
 }
 
 @Injectable({
@@ -25,26 +26,27 @@ export class LandmarkDisplayComponent implements OnInit {
   token: any
   landmarkForm: FormGroup
 
-  constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
-  
+  constructor(private landmarkService: LandmarkService, private http: HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
+
   ngOnInit() {
     this.setToken()
     this.getAll()
   }
 
-  setToken(){
+  setToken() {
     const token = localStorage.getItem('token')
-    this.token=token
+    this.token = token
   }
 
-  getAll(){
+  getAll() {
     this.landmarkService.getUserLandmarks().subscribe(data => {
       console.log(data)
-     this.userLandmarks=data
+      this.userLandmarks = data
     }
-    )}
-    
-  deleteLandmark(id){
+    )
+  }
+
+  deleteLandmark(id) {
     this.landmarkService.deleteLandmark(id).subscribe(data => {
       console.log('deleted');
       this.getAll()
@@ -53,15 +55,20 @@ export class LandmarkDisplayComponent implements OnInit {
 
   openCreateDialog() {
     this.dialog.open(CreateDialog);
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.userLandmarks
+    console.log(this.userLandmarks)
   }
 
   openUpdateDialog(id) {
-     this.landmarkService.getUserLandmark(id)
+    this.landmarkService.getUserLandmark(id)
     console.log(this.landmarkService.userLandmark)
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data= this.landmarkService.userLandmark
-    
+    dialogConfig.data = this.landmarkService.userLandmark
+    console.log(this.landmarkService.userLandmark)
+
     this.dialog.open(UpdateDialog)
   }
 }
@@ -79,11 +86,19 @@ export class CreateDialog {
   token: any
   landmarkForm: FormGroup
 
-  constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder,) { }
-  
+
+  constructor(public router:Router, 
+    public landmarkService: LandmarkService, 
+    private http: HttpClientModule, 
+    public dialog: MatDialog, 
+
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    // @Output() public itemCreated: EventEmitter<any> = new EventEmitter()
+    ) { }
+
   ngOnInit() {
     this.setToken()
-
+    this.userLandmarks = this.data
     this.landmarkForm = new FormGroup({
       title: new FormControl(),
       address: new FormControl(),
@@ -96,24 +111,31 @@ export class CreateDialog {
     })
   }
 
-  setToken(){
-    const token = localStorage.getItem('token')
-    this.token=token
+  getAll() {
+    this.landmarkService.getUserLandmarks().subscribe(data => {
+      console.log(data)
+      this.userLandmarks = data
+    }
+    )
   }
 
-  onSubmit(){
+  setToken() {
+    const token = localStorage.getItem('token')
+    this.token = token
+  }
+
+  onSubmit() {
     console.log(this.landmarkForm.value)
 
     this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
-      console.log(data);
+      console.log(data)
+      // this.itemCreated.emit(data)
     })
 
-    this.closeDialog()
-  }
-
-  closeDialog(){
+    this.getAll()
     this.dialog.closeAll();
   }
+
 }
 
 
@@ -129,8 +151,8 @@ export class UpdateDialog {
   token: any
   updateForm: FormGroup
 
-  constructor(private landmarkService: LandmarkService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any  ) { }
-  
+  constructor(private landmarkService: LandmarkService, private http: HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
   ngOnInit() {
     this.setToken()
 
@@ -146,53 +168,53 @@ export class UpdateDialog {
     })
   }
 
-  setToken(){
+  setToken() {
     const token = localStorage.getItem('token')
-    this.token=token
+    this.token = token
   }
 
-  onSubmitUpdate(){
-    if(this.updateForm.value.title === null){
+  onSubmitUpdate() {
+    if (this.updateForm.value.title === null) {
       delete this.updateForm.value.title
     }
 
-    if(this.updateForm.value.dateLastVisited === null){
+    if (this.updateForm.value.dateLastVisited === null) {
       delete this.updateForm.value.dateLastVisited
     }
 
-    if(this.updateForm.value.imageURL === null){
+    if (this.updateForm.value.imageURL === null) {
       delete this.updateForm.value.imageURL
     }
 
-    if(this.updateForm.value.comments === null){
+    if (this.updateForm.value.comments === null) {
       delete this.updateForm.value.comments
     }
 
-    if(this.updateForm.value.address === null){
+    if (this.updateForm.value.address === null) {
       delete this.updateForm.value.address
     }
 
-    if(this.updateForm.value.city === null){
+    if (this.updateForm.value.city === null) {
       delete this.updateForm.value.city
     }
 
-    if(this.updateForm.value.zip === null){
+    if (this.updateForm.value.zip === null) {
       delete this.updateForm.value.zip
     }
 
-    if(this.updateForm.value.state === null){
+    if (this.updateForm.value.state === null) {
       delete this.updateForm.value.state
     }
 
     console.log(this.updateForm.value)
-  
+
     this.landmarkService.updateLandmark(this.updateForm.value).subscribe(data => {
       console.log(data);
     })
     this.closeDialog()
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialog.closeAll();
   }
 }

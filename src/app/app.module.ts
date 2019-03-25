@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
@@ -33,6 +33,7 @@ import { AdminModule }  from './admin/admin.module';
 import { AuthModule }              from './auth/auth.module';
 import { HomeService } from './services/home.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
 
@@ -52,6 +53,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CreateDialog,
     UpdateDialog
   ],
+  exports: [
+    MatCardModule,
+    MatInputModule
+  ],
   imports: [
 
     BrowserModule,
@@ -65,6 +70,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatNativeDateModule,
@@ -83,7 +89,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CreateDialog,
     UpdateDialog
   ],
-  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
+  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
