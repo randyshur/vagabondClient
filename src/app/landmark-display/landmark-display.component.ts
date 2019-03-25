@@ -54,10 +54,16 @@ export class LandmarkDisplayComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialog.open(CreateDialog);
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.userLandmarks
+    const dialogRef=this.dialog.open(CreateDialog,
+      {
+        height: '600px',
+        width: '510px',
+      });
+    dialogRef.afterClosed().subscribe(results=> {
+      this.getAll()
+       })
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.data = this.userLandmarks
     console.log(this.userLandmarks)
   }
 
@@ -67,9 +73,15 @@ export class LandmarkDisplayComponent implements OnInit {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.landmarkService.userLandmark
-    console.log(this.landmarkService.userLandmark)
 
-    this.dialog.open(UpdateDialog)
+    const dialogRef=this.dialog.open(UpdateDialog, {
+      height: '600px',
+      width: '510px',
+    })
+    dialogRef.afterClosed().subscribe(results=> {
+      this.getAll()
+    })
+    
   }
 }
 
@@ -86,12 +98,10 @@ export class CreateDialog {
   token: any
   landmarkForm: FormGroup
 
-
   constructor(public router:Router, 
     public landmarkService: LandmarkService, 
     private http: HttpClientModule, 
     public dialog: MatDialog, 
-
     @Inject(MAT_DIALOG_DATA) public data: any,
     // @Output() public itemCreated: EventEmitter<any> = new EventEmitter()
     ) { }
@@ -100,15 +110,19 @@ export class CreateDialog {
     this.setToken()
     this.userLandmarks = this.data
     this.landmarkForm = new FormGroup({
-      title: new FormControl(),
+      title: new FormControl('',[Validators.required]),
       address: new FormControl(),
       city: new FormControl(),
       zip: new FormControl(),
-      dateLastVisited: new FormControl(),
+      dateLastVisited: new FormControl('',[Validators.required]),
       imageURL: new FormControl(),
       comments: new FormControl(),
-      state: new FormControl()
+      state: new FormControl('',[Validators.required])
     })
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.landmarkForm.controls[controlName].hasError(errorName);
   }
 
   getAll() {
@@ -157,15 +171,19 @@ export class UpdateDialog {
     this.setToken()
 
     this.updateForm = new FormGroup({
-      title: new FormControl(),
+      title: new FormControl('',[Validators.required]),
       address: new FormControl(),
       city: new FormControl(),
       zip: new FormControl(),
-      dateLastVisited: new FormControl(),
+      dateLastVisited: new FormControl('',[Validators.required]),
       imageURL: new FormControl(),
       comments: new FormControl(),
-      state: new FormControl()
+      state: new FormControl('',[Validators.required])
     })
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.updateForm.controls[controlName].hasError(errorName);
   }
 
   setToken() {

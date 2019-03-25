@@ -18,20 +18,22 @@
   <li class="bodyFont">“Stop worrying about the potholes in the road and enjoy the journey.” – Babs Hoffman<br><br></li>
   </ul> -->
 
-<mat-grid-list class="landmark" cols="2" *ngFor="let landmark of landmarks">
+<mat-grid-list class="landmark" cols="3" *ngFor="let landmark of landmarks" gutterSize="1em" rowHeight="40em">
 
-  <mat-grid-tile-header>
-    <h2 class="titleFont">{{landmark.title}}</h2>
+  <mat-grid-tile-header rowspan="1">
+    <h2 class="titleFont" id="center">{{landmark.title}}</h2>
   </mat-grid-tile-header>
+<br>
+ <br>
+ <br>
 
-  <mat-grid-tile>
-    <img src={{landmark.imageURL}} />
+  <mat-grid-tile colspan="2" >
+
+    <img class="landmarkImg" src={{landmark.imageURL}} />
 
   </mat-grid-tile>
 
-  <mat-grid-tile></mat-grid-tile>
-
-  <mat-grid-tile>
+  <mat-grid-tile id="desc">
 
     <p class="bodyFont">Location:{{landmark.address}}<br>{{landmark.city}}, {{landmark.state.state}}
     <br>
