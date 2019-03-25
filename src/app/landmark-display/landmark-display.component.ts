@@ -57,9 +57,9 @@ export class LandmarkDisplayComponent implements OnInit {
     const dialogRef=this.dialog.open(CreateDialog);
     dialogRef.afterClosed().subscribe(results=> {
       this.getAll()
-    })
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.userLandmarks
+       })
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.data = this.userLandmarks
     console.log(this.userLandmarks)
   }
 
@@ -67,6 +67,8 @@ export class LandmarkDisplayComponent implements OnInit {
     this.landmarkService.getUserLandmark(id)
     console.log(this.landmarkService.userLandmark)
 
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.userLandmark
 
     const dialogRef=this.dialog.open(UpdateDialog)
     dialogRef.afterClosed().subscribe(results=> {
@@ -89,12 +91,10 @@ export class CreateDialog {
   token: any
   landmarkForm: FormGroup
 
-
   constructor(public router:Router, 
     public landmarkService: LandmarkService, 
     private http: HttpClientModule, 
     public dialog: MatDialog, 
-
     @Inject(MAT_DIALOG_DATA) public data: any,
     // @Output() public itemCreated: EventEmitter<any> = new EventEmitter()
     ) { }
