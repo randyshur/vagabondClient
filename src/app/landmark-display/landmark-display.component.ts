@@ -54,8 +54,10 @@ export class LandmarkDisplayComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialog.open(CreateDialog);
-
+    const dialogRef=this.dialog.open(CreateDialog);
+    dialogRef.afterClosed().subscribe(results=> {
+      this.getAll()
+    })
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.userLandmarks
     console.log(this.userLandmarks)
@@ -65,11 +67,12 @@ export class LandmarkDisplayComponent implements OnInit {
     this.landmarkService.getUserLandmark(id)
     console.log(this.landmarkService.userLandmark)
 
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.landmarkService.userLandmark
-    console.log(this.landmarkService.userLandmark)
 
-    this.dialog.open(UpdateDialog)
+    const dialogRef=this.dialog.open(UpdateDialog)
+    dialogRef.afterClosed().subscribe(results=> {
+      this.getAll()
+    })
+    
   }
 }
 

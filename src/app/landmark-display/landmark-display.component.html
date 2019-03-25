@@ -1,6 +1,8 @@
 
 <div class="body">
-<div *ngIf="!this.userLandmarks"><h1>You don't have any landmarks. Would you like to create one?</h1></div>
+<div *ngIf="!this.userLandmarks" class="bodyFont" id="msg"><h1>You don't have any landmarks. 
+  <br>
+  Would you like to create one?</h1></div>
 
 <button mat-button (click)="openCreateDialog()" id="createButton">Create New Landmark</button>
 <br>
