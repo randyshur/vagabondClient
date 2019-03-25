@@ -1,20 +1,16 @@
 .logo{
 
-    width:70%;
-    height:70%;
-    
+   width:70%;
+
+    height:70%;   
+
 
 }
 
-
-.landmark{
-
-    margin-left:5em;
-}
 
 .landmarkImg{
     height: 100%;
-    width: 85%;
+    width: 100%;
     margin-left: 2em;
 
 }
@@ -43,7 +39,7 @@ button{
 mat-grid-list{
     background-color: white;
     margin: 8em;
-    padding: .5em;
+    padding: 1em 2em 0em 2em;
     border-radius: 10px;
 }
 
@@ -53,6 +49,9 @@ mat-grid-list{
 
 #quote{
     color:white;
-    font-size: 30px;
+
+    font-size: 25px;
 }
+
+
 

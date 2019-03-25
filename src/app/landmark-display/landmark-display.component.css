@@ -30,7 +30,7 @@ button{
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    height:100%;
+    height:100vh;
     overflow-y: hidden;
     margin-top: 5em;
 }
@@ -41,3 +41,10 @@ mat-grid-list{
     padding: .5em;
     border-radius: 10px;
 }
+
+
+#msg{
+    color:white;
+    margin-left:3em;
+}
+
