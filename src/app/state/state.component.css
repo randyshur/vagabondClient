@@ -41,8 +41,8 @@ mat-card {
     margin: 5em;
 }
 
-h1 {
-    
-}
+.container {
+    height: 500px !important;
+  }
 
 

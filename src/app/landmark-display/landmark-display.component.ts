@@ -54,7 +54,11 @@ export class LandmarkDisplayComponent implements OnInit {
   }
 
   openCreateDialog() {
-    const dialogRef=this.dialog.open(CreateDialog);
+    const dialogRef=this.dialog.open(CreateDialog,
+      {
+        height: '600px',
+        width: '510px',
+      });
     dialogRef.afterClosed().subscribe(results=> {
       this.getAll()
        })
@@ -68,9 +72,12 @@ export class LandmarkDisplayComponent implements OnInit {
     console.log(this.landmarkService.userLandmark)
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.userLandmark
+    dialogConfig.data = this.landmarkService.userLandmark
 
-    const dialogRef=this.dialog.open(UpdateDialog)
+    const dialogRef=this.dialog.open(UpdateDialog, {
+      height: '600px',
+      width: '510px',
+    })
     dialogRef.afterClosed().subscribe(results=> {
       this.getAll()
     })
@@ -103,15 +110,19 @@ export class CreateDialog {
     this.setToken()
     this.userLandmarks = this.data
     this.landmarkForm = new FormGroup({
-      title: new FormControl(),
+      title: new FormControl('',[Validators.required]),
       address: new FormControl(),
       city: new FormControl(),
       zip: new FormControl(),
-      dateLastVisited: new FormControl(),
+      dateLastVisited: new FormControl('',[Validators.required]),
       imageURL: new FormControl(),
       comments: new FormControl(),
-      state: new FormControl()
+      state: new FormControl('',[Validators.required])
     })
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.landmarkForm.controls[controlName].hasError(errorName);
   }
 
   getAll() {
@@ -160,15 +171,19 @@ export class UpdateDialog {
     this.setToken()
 
     this.updateForm = new FormGroup({
-      title: new FormControl(),
+      title: new FormControl('',[Validators.required]),
       address: new FormControl(),
       city: new FormControl(),
       zip: new FormControl(),
-      dateLastVisited: new FormControl(),
+      dateLastVisited: new FormControl('',[Validators.required]),
       imageURL: new FormControl(),
       comments: new FormControl(),
-      state: new FormControl()
+      state: new FormControl('',[Validators.required])
     })
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.updateForm.controls[controlName].hasError(errorName);
   }
 
   setToken() {
