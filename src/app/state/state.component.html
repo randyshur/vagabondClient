@@ -1,17 +1,16 @@
 <div class="body">
 
-<h1>States of the Union</h1>
 
 <div *ngIf="!this.userStates"><h1>You don't have any states. Would like to create one?</h1></div>
 
 <button id="createButton" mat-button (click)="openCreateStateDialog()" id="createStateButton">Add A State</button>
 <br>
 <br>
-<div *ngFor="let state of userStates">
-<mat-card>
-
+<div class="cardDiv">
+<mat-card *ngFor="let state of userStates">
+<mat-card-header>
   <mat-card-title class="text-center"><h2 class="stateTitle">{{state.state}}</h2> </mat-card-title>
-
+</mat-card-header>
     <mat-card-content>
       <p class="stateDate">{{state.dateLastVisited | date}}</p>
       <p class="stateComments">{{state.comments}}</p>
