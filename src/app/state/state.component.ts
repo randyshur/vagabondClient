@@ -87,7 +87,11 @@ export class StateComponent implements OnInit {
 
 
 openCreateStateDialog() {
-  this.dialog.open(CreateStateDialog)
+
+  const dialogRef=this.dialog.open(CreateStateDialog)
+  dialogRef.afterClosed().subscribe(results => {
+    this.getUserStates()
+  })
 }
 
 openUpdateStateDialog(id) {
@@ -156,6 +160,16 @@ export class CreateStateDialog {
   }
 
 
+//   let dialogRef = this.dialog.open(Component);
+// // properties
+// dialogRef.componentInstance.address = address;
+// dialogRef.componentInstance.canEdit = this.canEdit;
+// dialogRef.componentInstance.isEdit = true;
+// // subscription on close
+// dialogRef.afterClosed()
+// .subscribe(() => {})
+
+
   // deleteState(id){
   //   console.log(id)
   //   this.stateService.deleteState(id).subscribe(data => {
@@ -221,8 +235,7 @@ export class UpdateStateDialog {
     this.token=token
   }
 
-  onSubmitUpdate(id){
-    this.getState(id)
+  onSubmitUpdate(){
 
     this.stateService.updateState(this.updateForm.value).subscribe(data => {
       this.userStates=data

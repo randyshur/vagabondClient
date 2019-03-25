@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Update State</h1>
 <mat-dialog-content>
     <div class="formGroup">
-        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate(updateForm.value)">
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate(updateForm.value)" *ngIf="this.StateService.userState">
 
           <label>
             State:
-            <input id="state" type="text" formControlName="state">
+            <input id="state" type="text" formControlName="state" value={this.StateService.userState.State}>
           </label>
 
 
