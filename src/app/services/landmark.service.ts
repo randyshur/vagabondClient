@@ -22,7 +22,7 @@ export class LandmarkService {
 
   //get all user landmarks
   getUserLandmarks(){
-    return this.http.get(`${APIURL}api/landmark/mylandmarks`, httpOptions);
+    return this.http.get(`${APIURL}api/landmark/mylandmarks`, httpOptions)
   }
 
   //create single landmark
@@ -35,14 +35,23 @@ export class LandmarkService {
   //get single landmark by id for updating
   getUserLandmark(id){
     this.http.get(`${APIURL}api/landmark/mylandmark/${id}`, httpOptions).subscribe(data => {
-      this.userLandmark=data['id']
+
+     this.userLandmark=data
+      console.log(this.userLandmark)
+
    })}
+
+   getUpdateItem(){
+     return this.http.get(`${APIURL}api/landmark/mylandmark/${this.userLandmark}`, httpOptions)
+   }
 
   //update landmark by id
   updateLandmark(form){
     console.log(form)
     // console.log(id)
-    return this.http.put(`${APIURL}api/landmark/mylandmark/${this.userLandmark}`, form, httpOptions)
+
+    return this.http.put(`${APIURL}api/landmark/mylandmark/${this.userLandmark.id}`, form, httpOptions)
+
   }
 
   deleteLandmark(id){

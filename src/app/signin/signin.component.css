@@ -1,0 +1,15 @@
+
+.form-group{
+    margin-top: 20em;
+}
+
+.body{
+  background-image: url('../../assets/matt-duncan-127528-unsplash.jpg') !important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100vh;
+  /* overflow-y: hidden; */
+  margin-top: 5em;
+}
+

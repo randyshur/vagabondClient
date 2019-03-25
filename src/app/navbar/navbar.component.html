@@ -1,13 +1,17 @@
-<mat-toolbar color="warn">
-  <span class="titleFont">Vagabond</span>
+<mat-toolbar class="nav" color="warn">
 
-  <span class="example-fill-remaining-space"></span>
+  <span class="example-fill-remaining-space navTitle">Vagabond </span>
 
- <span>
-  <a routerLink="/home"><Button class="HomeButton">Home</Button></a>
-  <a routerLink="/landmark"><Button class="LandmarksButton">Landmarks</Button></a>
-  <a routerLink="/state"><Button class="LandmarksButton">States</Button></a>
-  <a routerLink="/signin"><Button class="LoginButton">Login</Button></a>
-  <a routerLink="/signup"><Button class="SignupButton">Signup</Button></a>
-</span>
+  <span>
+    <a routerLink="/home"><button mat-button class="navButton">Home</button></a>
+
+    <a routerLink="/state" *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">States</button></a>
+    <a routerLink="/landmark" *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">Landmarks</button></a>
+    <a routerLink="/admin" *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">Admin</button></a>
+
+    <a routerLink="/authsignin" *ngIf="this.isTokenExpired()"><button mat-button class="navButton">SignIn</button></a>
+    <a routerLink="/authsignup" *ngIf="this.isTokenExpired()"><button mat-button class="navButton">SignUp</button></a>
+    <a routerLink="/authsignout"  *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">SignOut</button></a>
+
+  </span>
 </mat-toolbar>

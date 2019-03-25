@@ -1,0 +1,59 @@
+.logo{
+
+   width:70%;
+
+    height:70%;   
+
+
+}
+
+
+.landmarkImg{
+    height: 70%;
+    width: 70%;
+    margin-left: 2em;
+
+}
+
+button{
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    background: #EDAB65;
+    margin: 5px;
+
+}
+
+
+.body{
+
+    background-image: url('../../assets/justin-luebke-43531-unsplash.jpg') !important;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100%;
+    overflow-y: hidden;
+    margin-top: 5em;
+}
+
+mat-grid-list{
+    background-color: white;
+    margin: 15em;
+    padding: 1em 2em 0em 2em;
+    border-radius: 10px;
+}
+
+#jumbo{
+    background-color: transparent;
+}
+
+#quote{
+    color:white;
+    font-size: 25px;
+}
+
+#center{
+    text-align: center;
+    margin-bottom: 5em;
+}
+

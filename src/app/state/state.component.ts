@@ -1,15 +1,20 @@
-import {Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {Component, OnInit, Inject, } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA, MatButton, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { StateService } from '../services/state.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Injectable } from '@angular/core';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+export interface DialogData {
+  userState
 }
+
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-state',
@@ -18,136 +23,248 @@ export interface Tile {
 })
 
 export class StateComponent implements OnInit {
+ 
 
-  allStates: any
+  userState: any
   userStates: any
   stateid: number
+  token: any
 
-  constructor(private StateService: StateService, private http:HttpClientModule, public dialog: MatDialog) {}
+  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) {}
+
+  
 
   ngOnInit() {
 
-    // this.StateService.getUserStates().subscribe(data => {
-    //   this.userStates=data;
-    //   console.log(this.userStates);
-    // })
+    this.getUserStates()
+    this.setToken()
+ 
   }
 
-  deleteState(id){
-    this.StateService.deleteState(id).subscribe(data => {
-      console.log('state deleted');
+  setToken(){
+    const token = localStorage.getItem('token')
+    this.token=token
+  }
+
+  getUserStates(){
+    this.stateService.getUserStates().subscribe(data => {
+      this.userStates=data
+      console.log("create =>", data)
     })
   }
 
 
+  // postState(){
+  //   this.stateService.createState().subscribe(data => {
+  //     this.allStates=data;
+  //     console.log(data)
+  //   })
+  // }
+
+  deleteState(id){
+    console.log(id)
+    this.stateService.deleteState(id).subscribe(data => {
+      this.userState=data;
+      this.getUserStates()
+    })
+  }
+
+  // getState(id){
+  //   this.stateService.getState(id).subscribe(data => {
+  //     this.userState=data;
+  //     console.log(this.userState);
+  //   })
+  // }
+
+  
 
 
-  openDialog() {
-    const dialogRef = this.dialog.open(StateComponentUpdate);
+openCreateStateDialog() {
 
-    dialogRef.afterClosed().subscribe(
-    );
+  const dialogRef=this.dialog.open(CreateStateDialog,
+   {
+    height: '450px',
+    width: '650px',
+  })
+  dialogRef.afterClosed().subscribe(results => {
+    this.getUserStates()
+  })
+}
+
+openUpdateStateDialog(id) {
+  this.stateService.getState(id)
+  console.log(id)
+  const dialogRef=this.dialog.open(UpdateStateDialog,
+   {
+    height: '420px',
+    width: '450px',
+  });
+  dialogRef.afterClosed().subscribe(results => {
+    this.getUserStates()
+
+    const dialogConfig = new MatDialogConfig();
+   dialogConfig.data = this.stateService.userState
+  })
+}
+
+
+
+
+
+}
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+@Component({
+  selector: 'create-state-dialog',
+  templateUrl: 'create-state-dialog.html',
+})
+export class CreateStateDialog {
+
+  userStates: any
+  token: any
+  stateForm: FormGroup
+
+
+  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
+
+  
+ ngOnInit() {
+   this.setToken()
+   this.getUserStates()
+
+   this.stateForm= new FormGroup({
+     state: new FormControl('',[Validators.required]),
+     dateLastVisited: new FormControl(),
+     comments: new FormControl()
+   })
+ }
+
+ public hasError = (controlName: string, errorName: string) => {
+  return this.stateForm.controls[controlName].hasError(errorName);
+}
+
+  setToken(){
+    const token = localStorage.getItem('token')
+    this.token=token
+  }
+
+
+  getUserStates(){
+    this.stateService.getUserStates().subscribe(data => {
+      this.userStates=data
+      console.log(data) //here
+    })
+  }
+
+  onSubmit(){
+    console.log(this.stateForm.value)
+   this.stateService.createState(this.stateForm.value).subscribe(data => {
+     this.userStates=data;
+     this.getUserStates()
+    })
+    this.closeDialog()
+  }
+
+
+//   let dialogRef = this.dialog.open(Component);
+// // properties
+// dialogRef.componentInstance.address = address;
+// dialogRef.componentInstance.canEdit = this.canEdit;
+// dialogRef.componentInstance.isEdit = true;
+// // subscription on close
+// dialogRef.afterClosed()
+// .subscribe(() => {})
+
+
+  // deleteState(id){
+  //   console.log(id)
+  //   this.stateService.deleteState(id).subscribe(data => {
+  //     this.userState=data;
+  //     this.getUserStates()
+  //   })
+  // }
+
+
+  closeDialog(){
+    this.dialog.closeAll();
+    this.getUserStates();
+    console.log('dialog closing')
   }
 }
 
 @Component({
-  selector: 'app-state-update',
+  selector: 'update-state-dialog',
   templateUrl: 'update.component.html',
 })
-export class StateComponentUpdate {
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
+export class UpdateStateDialog {
+
+  userStates: any
+  token: any
+  public updateForm: FormGroup
+
+
+  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private stateService: StateService) { }
+
+  public ngOnInit() {
+    this.setToken()
+
+
+  this.updateForm = new FormGroup({
+    state: new FormControl('', [Validators.required]),
+    dateLastVisited: new FormControl(),
+    comments: new FormControl()
+  })
+  } 
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.updateForm.controls[controlName].hasError(errorName);
+  }
+
+  // getState(id){
+  //   this.stateService.getState(id).subscribe(data => {
+  //     this.userStates=data;
+  //     this.getUserStates()
+  //     console.log(this.userStates);
+  //   })
+  // }
+
+
+  getUserStates(){
+    this.stateService.getUserStates().subscribe(data => {
+      this.userStates=data
+      console.log(data)
+    })
+  }
+
+  setToken(){
+    const token = localStorage.getItem('token')
+    this.token=token
+  }
+
+  onSubmitUpdate(){
+    console.log(this.updateForm.value)
+    this.stateService.updateState(this.updateForm.value).subscribe(data => {
+      this.userStates=data
+      console.log(data);
+    })
+    this.closeDialog()
+  }
+
+
+
+
+  closeDialog(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-state',
-//   templateUrl: './state.component.html',
-//   styleUrls: ['./state.component.css']
-// })
-// export class StateComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-
-
-
-// import { Component, Inject } from '@angular/core';
-// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
-// export interface DialogData {
-//   animal: string;
-//   name: string;
-// }
-
-// /**
-//  * @title Dialog Overview
-//  */
-// @Component({
-//   selector: 'dialog-overview-example',
-//   templateUrl: 'dialog-overview-example.html',
-//   styleUrls: ['dialog-overview-example.css'],
-// })
-// export class StateComponent {
-
-//   animal: string;
-//   name: string;
-
-//   constructor(public dialog: MatDialog) {}
-
-//   openDialog(): void {
-//     const dialogRef = this.dialog.open(StateComponent, {
-//       width: '250px',
-//       data: {name: this.name, animal: this.animal}
-//     });
-
-//     dialogRef.afterClosed().subscribe(result => {
-//       console.log('The dialog was closed');
-//       this.animal = result;
-//     });
-//   }
-
-// }
-
-// @Component({
-//   selector: 'app-updateState',
-//   templateUrl: 'update.component.html',
-// })
-// export class UpdateStateComponent {
-
-//   constructor(
-//     public dialogRef: MatDialogRef<UpdateStateComponent>,
-//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-
-// }

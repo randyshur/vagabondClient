@@ -1,53 +1,55 @@
+<div class="container">
 <h1 mat-dialog-title>Create Landmark</h1>
-<mat-dialog-content>
+<mat-dialog-content >
     <div class="formGroup">
-        <form [formGroup]="landmarkForm" (ngSubmit)="onSubmit(landmarkForm.value)">
+        <form [formGroup]="landmarkForm" novalidate (ngSubmit)="onSubmit()">
 
-            <label>
+            <mat-form-field style="width:450px !important">
                 Title:
-                <input id="title" type="text" formControlName="title" required>
-                <!-- <div *ngIf="submitted && title.invalid" class="alert alert-danger">Please enter a title.</div> -->
-            </label>
 
-            <label>
+                <input matInput id="title" type="text" formControlName="title" required>
+                <mat-error *ngIf="hasError('state', 'required')">Title is required.</mat-error>
+            </mat-form-field >
+            <br>
+            <mat-form-field style="width:450px !important">
                 Date Last Visited:
-                <input id="date" type="date" formControlName="dateLastVisited" required>
-                <!-- <div *ngIf="submitted && date.invalid" class="alert alert-danger">
-                    Please tell us when you visited.</div> -->
-            </label>
+                <input matInput id="date" type="date" formControlName="dateLastVisited" required>
+                <mat-error *ngIf="hasError('state', 'required')">Tell us when you were there.</mat-error>
+            </mat-form-field >
+            <br>
+            <mat-form-field style="width:450px !important">
 
-            <label>
                 Image URL:
-                <input id="imageURL" type="text" formControlName="imageURL">
-            </label>
-
-            <label>
+                <input matInput id="imageURL" type="text" formControlName="imageURL">
+            </mat-form-field >
+            <br>
+            <mat-form-field style="width:450px !important">
                 Comments:
-                <input id="comments" type="text" formControlName="comments">
-            </label>
+                <input matInput id="comments" type="text" formControlName="comments">
+            </mat-form-field >
             <br>
 
-            <h4>Location</h4>
-            <label>
+            <mat-form-field style="width:450px !important">
                 Address:
-                <input id="address" type="text" formControlName="address">
-            </label>
-
-            <label>
+                <input matInput id="address" type="text" formControlName="address">
+            </mat-form-field >
+            <br>
+            <mat-form-field style="width:450px !important">
                 City:
-                <input id="city" type="text" formControlName="city">
-            </label>
-
-            <label>
+                <input matInput id="city" type="text" formControlName="city">
+            </mat-form-field >
+            <br>
+            <mat-form-field style="width:450px !important">
                 Zip:
-                <input id="zip" type="text" formControlName="zip">
-            </label>
-
-            <label>
+                <input matInput id="zip" type="text" formControlName="zip">
+            </mat-form-field >
+            <br>
+            <mat-form-field style="width:450px !important">
                 State:
-                <input id="state" type="text" formControlName="state">
-            </label>
-
+                <input matInput id="state" type="text" formControlName="state">
+                <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
+            </mat-form-field >
+            <br>
             <mat-dialog-actions>
                 <button mat-button type="submit" [disabled]="!landmarkForm.valid">Submit</button>
                 <button mat-button mat-dialog-close>Close</button>
@@ -57,3 +59,4 @@
     </div>
 
 </mat-dialog-content>
+</div>
