@@ -1,11 +1,14 @@
 .logo{
+
     width:70%;
     height:70%;
     
+
 }
 
 
 .landmark{
+
     margin-left:5em;
 }
 
@@ -17,14 +20,17 @@
 }
 
 button{
+
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 20px;
     background: #EDAB65;
     margin: 5px;
+
 }
 
 
 .body{
+
     background-image: url('../../assets/justin-luebke-43531-unsplash.jpg') !important;
     background-attachment: fixed;
     background-size: cover;
@@ -49,3 +55,4 @@ mat-grid-list{
     color:white;
     font-size: 30px;
 }
+
