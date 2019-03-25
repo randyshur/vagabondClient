@@ -3,11 +3,12 @@
 
 .titleFont{
     font-family: 'dolce_vitaquite_regular';
+    font-size: 35px;
 }
 
 .bodyFont{
     font-family: 'Barlow Condensed', sans-serif;
-
+    font-size: 20px;
 }
 
 @font-face {
@@ -37,5 +38,13 @@
 
 }
 
+body{
+    margin: 0;
+
+}
+
+.text-center{
+    text-align: center;
+}
 
 

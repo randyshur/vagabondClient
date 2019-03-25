@@ -1,53 +1,52 @@
+
 <h1 mat-dialog-title>Update Landmark</h1>
-<mat-dialog-content>
-    <div class="formGroup">
-        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate()">
+<mat-dialog-content class="bodyFont">
+    <div class="formGroup" >
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate()" *ngIf="this.landmarkService.userLandmark">
 
             <label>
                 Title:
-                <input id="title" type="text" formControlName="title">
-                <div class="alert alert-danger">Please enter a title.</div>
+                <input id="title" type="text" formControlName="title" value={{this.landmarkService.userLandmark.title}}  >
             </label>
-
+            <br>
             <label>
                 Date Last Visited:
-                <input id="date" type="date" formControlName="dateLastVisited">
-                <div  class="alert alert-danger">
-                    Please tell us when you visited.</div>
-            </label>
+                <input id="date" type="date" formControlName="dateLastVisited" value={{this.landmarkService.userLandmark.dateLastVisited}} >
 
+            </label>
+            <br>
             <label>
                 Image URL:
-                <input id="imageURL" type="text" formControlName="imageURL">
+                <input id="imageURL" type="text" formControlName="imageURL" value={{this.landmarkService.userLandmark.imageURL}}>
             </label>
-
+            <br>
             <label>
                 Comments:
-                <input id="comments" type="text" formControlName="comments">
+                <input id="comments" type="text" formControlName="comments" value={{this.landmarkService.userLandmark.comments}}>
             </label>
             <br>
 
             <h4>Location</h4>
             <label>
                 Address:
-                <input id="address" type="text" formControlName="address">
+                <input id="address" type="text" formControlName="address" value={{this.landmarkService.userLandmark.address}}>
             </label>
-
+            <br>
             <label>
                 City:
-                <input id="city" type="text" formControlName="city">
+                <input id="city" type="text" formControlName="city" value={{this.landmarkService.userLandmark.city}}>
             </label>
-
+            <br>
             <label>
                 Zip:
-                <input id="zip" type="text" formControlName="zip">
+                <input id="zip" type="text" formControlName="zip" value={{this.landmarkService.userLandmark.zip}}>
             </label>
-
+            <br>
             <label>
-                    State:
-                    <input id="state" type="text" formControlName="state">
-                </label>
-
+                State:
+                <input id="state" type="text" formControlName="state" value={{this.landmarkService.userLandmark.state.state}}>
+            </label>
+            <br>
             <mat-dialog-actions>
                 <button mat-button type="submit" [disabled]="!updateForm.valid">Submit</button>
                 <button mat-button mat-dialog-close>Close</button>

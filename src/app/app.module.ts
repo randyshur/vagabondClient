@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { HomeDisplayComponent } from './home/home-display.component';
 
 import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
@@ -33,6 +32,7 @@ import { AdminModule }  from './admin/admin.module';
 import { AuthModule }              from './auth/auth.module';
 import { HomeService } from './services/home.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
 
@@ -41,7 +41,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavbarComponent,
     PageNotFoundComponent,
     HomeComponent,
-    HomeDisplayComponent,
     SignUpComponent,
     SignInComponent,
     UserComponent,
@@ -51,6 +50,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     LandmarkDisplayComponent,
     CreateDialog,
     UpdateDialog
+  ],
+  exports: [
+    MatCardModule,
+    MatInputModule
   ],
   imports: [
 
@@ -64,6 +67,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatNativeDateModule,
@@ -81,7 +85,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CreateDialog,
     UpdateDialog
   ],
-  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService],
+  providers: [LandmarkService, EndpointsService, AuthenticationService, AlertService, HomeService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
