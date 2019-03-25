@@ -9,7 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './signup/signup.component';
 import { SignInComponent } from './signin/signin.component';
 import { UserComponent } from './user/user.component';
-import { StateComponent, StateComponentUpdate } from './state/state.component';
+import { StateComponent, CreateStateDialog, UpdateStateDialog } from './state/state.component';
 import { LandmarkEditComponent } from './landmark-edit/landmark-edit.component';
 import { LandmarkDisplayComponent, CreateDialog, UpdateDialog } from './landmark-display/landmark-display.component';
 import { LandmarkService } from './services/landmark.service';
@@ -45,7 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignInComponent,
     UserComponent,
     StateComponent,
-    StateComponentUpdate,
+    CreateStateDialog,
+    UpdateStateDialog,
     LandmarkEditComponent,
     LandmarkDisplayComponent,
     CreateDialog,
@@ -64,6 +66,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     RouterModule,
     MatGridListModule,
+    MatSelectModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -80,7 +83,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   entryComponents: [
     StateComponent,
-    StateComponentUpdate,
+    CreateStateDialog,
+    UpdateStateDialog,
     LandmarkDisplayComponent,
     CreateDialog,
     UpdateDialog
