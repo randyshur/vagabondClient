@@ -35,8 +35,10 @@ export class LandmarkService {
   //get single landmark by id for updating
   getUserLandmark(id){
     this.http.get(`${APIURL}api/landmark/mylandmark/${id}`, httpOptions).subscribe(data => {
+
      this.userLandmark=data
       console.log(this.userLandmark)
+
    })}
 
    getUpdateItem(){
@@ -47,7 +49,9 @@ export class LandmarkService {
   updateLandmark(form){
     console.log(form)
     // console.log(id)
+
     return this.http.put(`${APIURL}api/landmark/mylandmark/${this.userLandmark.id}`, form, httpOptions)
+
   }
 
   deleteLandmark(id){

@@ -103,7 +103,7 @@ export class CreateDialog {
     private http: HttpClientModule, 
     public dialog: MatDialog, 
     @Inject(MAT_DIALOG_DATA) public data: any,
-    // @Output() public itemCreated: EventEmitter<any> = new EventEmitter()
+    
     ) { }
 
   ngOnInit() {
@@ -138,7 +138,9 @@ export class CreateDialog {
     this.token = token
   }
 
+
   onSubmit() {
+
     console.log(this.landmarkForm.value)
 
     this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
@@ -191,6 +193,7 @@ export class UpdateDialog {
     this.token = token
   }
 
+
   onSubmitUpdate() {
     if (this.updateForm.value.title === null) {
       delete this.updateForm.value.title
@@ -223,6 +226,7 @@ export class UpdateDialog {
     if (this.updateForm.value.state === null) {
       delete this.updateForm.value.state
     }
+
 
     console.log(this.updateForm.value)
 
