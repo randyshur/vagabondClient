@@ -49,7 +49,7 @@ export class AuthSigninComponent implements OnInit {
 
   get f() { return this.signInForm.controls; }
 
-  public signIn() {
+  public signIn(form) {
     this.submitted = true;
 
     // stop here if form is invalid

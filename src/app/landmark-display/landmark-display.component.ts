@@ -26,7 +26,7 @@ export class LandmarkDisplayComponent implements OnInit {
   token: any
   landmarkForm: FormGroup
 
-  constructor(private landmarkService: LandmarkService, private http: HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
+  constructor(public landmarkService: LandmarkService, private http: HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.setToken()
@@ -167,7 +167,7 @@ export class UpdateDialog {
   token: any
   updateForm: FormGroup
 
-  constructor(private landmarkService: LandmarkService, private http: HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public landmarkService: LandmarkService, private http: HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.setToken()
