@@ -168,7 +168,7 @@ export class UpdateStateDialog {
   public updateForm: FormGroup
 
 
-  constructor(public http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private stateService: StateService) { }
+  constructor(public http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public stateService: StateService) { }
 
   public ngOnInit() {
     this.setToken()
