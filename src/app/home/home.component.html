@@ -1,4 +1,5 @@
 <div class="body">
+
 <mat-grid-list cols="3" class="landing" id="jumbo">
     <mat-grid-tile>
         <p class="bodyFont" id="quote">“Stuff your eyes with wonder, live as if you’d drop dead in ten seconds. See the world. It’s more fantastic than any dream made or paid for in factories.” – Ray Bradbury<br></p>
@@ -24,10 +25,15 @@
   </mat-grid-tile-header>
 
   <mat-grid-tile>
+
     <img class="landmarkImg" src={{landmark.imageURL}} />
+
   </mat-grid-tile>
 
+  <mat-grid-tile></mat-grid-tile>
+
   <mat-grid-tile>
+
     <p class="bodyFont">Location:{{landmark.address}}<br>{{landmark.city}}, {{landmark.state.state}}
     <br>
     {{landmark.comments}}

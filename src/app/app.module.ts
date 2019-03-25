@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
@@ -51,6 +51,10 @@ import { UserService } from './services/user.service';
     CreateDialog,
     UpdateDialog
   ],
+  exports: [
+    MatCardModule,
+    MatInputModule
+  ],
   imports: [
 
     BrowserModule,
@@ -63,6 +67,7 @@ import { UserService } from './services/user.service';
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatNativeDateModule,

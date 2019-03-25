@@ -1,0 +1,17 @@
+.body{
+  background-image: url('../../../assets/matt-duncan-127528-unsplash.jpg') !important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100%;
+  overflow-y: hidden;
+  margin-top: 5em;
+}
+.signin {
+  max-width: 400px;
+  margin: 100px auto;
+}
+.signin form {
+    display: flex;
+    flex-direction: column;
+  }
