@@ -47,3 +47,10 @@ mat-grid-list{
     margin-left:3em;
 }
 
+/deep/ .mat-dialog-content {
+    /* overflow-y: hidden !important; */
+    overflow-x:hidden !important;
+}
+
+
+

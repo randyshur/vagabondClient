@@ -1,23 +1,28 @@
+<div class="container">
 <h1 mat-dialog-title>Update State</h1>
 <mat-dialog-content>
     <div class="formGroup">
-        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate(updateForm.value)" *ngIf="this.stateService.userState">
 
-        
-            <label>
+        <form [formGroup]="updateForm" novalidate (ngSubmit)="onSubmitUpdate(updateForm.value)">
+
+
+            <mat-form-field style="width:350px !important">
                 State:
-                <input id="state" type="text" formControlName="state" required value={{this.stateService.userState.state}}>
-            </label>
 
-            <label>
+                <input  matInput id="state" type="text" formControlName="state" required  value={{this.stateService.userState.state}}>
+                <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:350px !important">
                 Date Last Visited:
-                <input id="date" type="date" formControlName="dateLastVisited" required value={{this.stateService.userState.dateLastVisited}}>
-            </label>
-
-            <label>
+                <input matInput id="date" type="date" formControlName="dateLastVisited" value={{this.stateService.userState.dateLastVisited}} >
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:350px !important">
                 Comments:
-                <input id="comments" type="text" formControlName="comments" value={{this.stateService.userState.comments}}>
-            </label>
+                <input matInput id="comments" type="text" formControlName="comments" value={{this.stateService.userState.comments}}>
+            </mat-form-field>
+            <br>
 
 
             <mat-dialog-actions>
@@ -29,3 +34,4 @@
     </div>
 
 </mat-dialog-content>
+</div>
