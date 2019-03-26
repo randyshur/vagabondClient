@@ -72,3 +72,10 @@ body{
     height: 100vh;
     background-size:cover;
 }
+
+.phantomDiv{
+    font-size: 100px;
+    color: white;
+    z-index: -4;
+    visibility: hidden;
+}
