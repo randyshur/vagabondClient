@@ -48,7 +48,7 @@ export class AuthSignupComponent implements OnInit {
     return this.signUpForm.controls[controlName].hasError(errorName);
   }
 
-  public signUp() {
+  public signUp(form) {
 
     // right before we submit our form to the server we check if the form is valid
     // if not, we pass the form to the validateform function again. Now with check dirty false
