@@ -1,9 +1,11 @@
 <div class="body">
 
 
-<div *ngIf="!this.userStates"><h1>You don't have any states. Would like to create one?</h1></div>
+<div class="bodyFont" *ngIf="!this.userStates"><h1>You don't have any states. Would you like to create one?</h1></div>
 
-<button id="createButton" mat-button (click)="openCreateStateDialog()" class="createStateButton">Add A State</button>
+
+<button mat-raised-button  class="bodyFont" (click)="openCreateStateDialog()" id="createStateButton">Add A State</button>
+
 <br>
 <br>
 <div class="cardDiv">
@@ -17,8 +19,8 @@
     </mat-card-content>
 
     <mat-card-actions id="updateDeleteButton">
-      <button mat-button (click)="openUpdateStateDialog(state.id)">Update State</button>
-      <button mat-button  (click)="deleteState(state.id)">Delete State</button>
+      <button mat-raised-button (click)="openUpdateStateDialog(state.id)">Update State</button>
+      <button mat-raised-button  (click)="deleteState(state.id)">Delete State</button>
     </mat-card-actions>
   </mat-card>
 </div>

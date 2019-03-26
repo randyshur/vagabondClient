@@ -22,15 +22,12 @@ export interface DialogData {
 
 export class StateComponent implements OnInit {
  
-
   userState: any
   userStates: any
   stateid: number
   token: any
 
   constructor(public stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) {}
-
-  
 
   ngOnInit() {
 
@@ -67,7 +64,7 @@ openCreateStateDialog() {
   const dialogRef=this.dialog.open(CreateStateDialog,
    {
     height: '450px',
-    width: '650px',
+    width: '430px',
   })
   dialogRef.afterClosed().subscribe(results => {
     this.getUserStates()
@@ -75,13 +72,13 @@ openCreateStateDialog() {
 }
 
 openUpdateStateDialog(id) {
-  this.stateService.getState(id)
   console.log(id)
+  this.stateService.getState(id)
   const dialogRef=this.dialog.open(UpdateStateDialog,
    {
-    height: '420px',
-    width: '450px',
-  });
+    height: '450px',
+    width: '430px',
+  })
   dialogRef.afterClosed().subscribe(results => {
     this.getUserStates()
 
