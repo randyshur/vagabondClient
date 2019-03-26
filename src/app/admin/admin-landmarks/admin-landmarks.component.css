@@ -1,0 +1,58 @@
+
+.landmarkImg{
+  height: auto;
+  width: 100%;
+  margin-left: 2em;
+
+}
+
+button{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  background: #EDAB65;
+  margin: 5px;
+}
+
+#createButton{
+  font-size: 35px;
+  background-color: #EDAB65;
+  font-family: 'Barlow Condensed', sans-serif;
+  padding: 5px;
+  display: inline-flex;
+  float: right !important;
+  margin-right: 2em;
+  margin-top: 2em;
+}
+
+.body{
+  background-image: url('../../../assets/nightroad2.jpg') !important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* height:100vh; */
+  overflow-y: hidden;
+  margin-top: 5em;
+}
+
+mat-grid-list{
+  background-color: white;
+  margin: 8em auto;
+  padding: .5em;
+  border-radius: 10px;
+  width: 70%;
+
+}
+
+
+#msg{
+  color:white;
+  margin-left:3em;
+}
+
+/deep/ .mat-dialog-content {
+  /* overflow-y: hidden !important; */
+  overflow-x:hidden !important;
+}
+
+
+

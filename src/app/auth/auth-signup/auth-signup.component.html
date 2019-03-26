@@ -4,14 +4,14 @@
       <mat-card-title>
         Sign up
       </mat-card-title>
-      <form [formGroup]="signUpForm"  novalidate (ngSubmit)="signUp(signUpForm.value)">
+      <form [formGroup]="signUpForm" novalidate (ngSubmit)="signUp(signUpForm.value)">
         <mat-card-content>
 
           <mat-form-field>
             <input matInput type="text" placeholder="User Name" formControlName="username" id="username">
             <mat-error *ngIf="hasError('username', 'required')">Username is required</mat-error>
           </mat-form-field>
-<br>
+          <br>
           <mat-form-field>
             <input matInput type="password" placeholder="Password" formControlName="password" id="password">
             <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
@@ -19,39 +19,39 @@
           </mat-form-field>
           <br>
           <mat-form-field>
-              <input matInput type="email" placeholder="Email" formControlName="email" id="email">
-              <mat-error *ngIf="hasError('password', 'required')">Email is required</mat-error>
-              <mat-error *ngIf="hasError('password', 'email')">Password must be in the correctr format</mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input matInput type="text" placeholder="First Name" formControlName="firstName" id="firstName">
-              </mat-form-field>
-              <br>
-              <mat-form-field>
-                  <input matInput type="text" placeholder="Last Name" formControlName="lastName" id="lastName">
-                </mat-form-field>
-                <br>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Address" formControlName="address" id="address">
-              </mat-form-field>
-              <br>
-              <mat-form-field>
-                  <input matInput type="text" placeholder="City" formControlName="city" id="city">
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput type="text" placeholder="State" formControlName="state" id="state">
-                  </mat-form-field>
-                  <br>
-                  <mat-form-field>
-                      <input matInput type="text" placeholder="Zip" formControlName="zip" id="zip">
-                    </mat-form-field>
+            <input matInput type="email" placeholder="Email" formControlName="email" id="email">
+            <mat-error *ngIf="hasError('password', 'required')">Email is required</mat-error>
+            <mat-error *ngIf="hasError('password', 'email')">Password must be in the correctr format</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput type="text" placeholder="First Name" formControlName="firstName" id="firstName">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Last Name" formControlName="lastName" id="lastName">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Address" formControlName="address" id="address">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput type="text" placeholder="City" formControlName="city" id="city">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput type="text" placeholder="State" formControlName="state" id="state">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Zip" formControlName="zip" id="zip">
+          </mat-form-field>
 
         </mat-card-content>
         <mat-card-actions align="center">
           <button mat-raised-button color="primary" [disabled]="!signUpForm.valid">SignUp</button>
-          <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+          <button type="button" mat-raised-button color="warn" >Cancel</button>
         </mat-card-actions>
       </form>
     </mat-card>

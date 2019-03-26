@@ -10,8 +10,6 @@ export interface DialogData {
 }
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -24,15 +22,12 @@ export interface DialogData {
 
 export class StateComponent implements OnInit {
  
-
   userState: any
   userStates: any
   stateid: number
   token: any
 
-  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) {}
-
-  
+  constructor(public stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) {}
 
   ngOnInit() {
 
@@ -54,12 +49,6 @@ export class StateComponent implements OnInit {
   }
 
 
-  // postState(){
-  //   this.stateService.createState().subscribe(data => {
-  //     this.allStates=data;
-  //     console.log(data)
-  //   })
-  // }
 
   deleteState(id){
     console.log(id)
@@ -69,22 +58,13 @@ export class StateComponent implements OnInit {
     })
   }
 
-  // getState(id){
-  //   this.stateService.getState(id).subscribe(data => {
-  //     this.userState=data;
-  //     console.log(this.userState);
-  //   })
-  // }
-
-  
-
 
 openCreateStateDialog() {
 
   const dialogRef=this.dialog.open(CreateStateDialog,
    {
     height: '450px',
-    width: '650px',
+    width: '430px',
   })
   dialogRef.afterClosed().subscribe(results => {
     this.getUserStates()
@@ -92,13 +72,13 @@ openCreateStateDialog() {
 }
 
 openUpdateStateDialog(id) {
-  this.stateService.getState(id)
   console.log(id)
+  this.stateService.getState(id)
   const dialogRef=this.dialog.open(UpdateStateDialog,
    {
-    height: '420px',
-    width: '450px',
-  });
+    height: '450px',
+    width: '430px',
+  })
   dialogRef.afterClosed().subscribe(results => {
     this.getUserStates()
 
@@ -106,10 +86,6 @@ openUpdateStateDialog(id) {
    dialogConfig.data = this.stateService.userState
   })
 }
-
-
-
-
 
 }
 
@@ -130,7 +106,7 @@ export class CreateStateDialog {
   stateForm: FormGroup
 
 
-  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
+  constructor(public stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
 
   
  ngOnInit() {
@@ -161,7 +137,7 @@ export class CreateStateDialog {
     })
   }
 
-  onSubmit(){
+  onSubmit(form){
     console.log(this.stateForm.value)
    this.stateService.createState(this.stateForm.value).subscribe(data => {
      this.userStates=data;
@@ -169,25 +145,6 @@ export class CreateStateDialog {
     })
     this.closeDialog()
   }
-
-
-//   let dialogRef = this.dialog.open(Component);
-// // properties
-// dialogRef.componentInstance.address = address;
-// dialogRef.componentInstance.canEdit = this.canEdit;
-// dialogRef.componentInstance.isEdit = true;
-// // subscription on close
-// dialogRef.afterClosed()
-// .subscribe(() => {})
-
-
-  // deleteState(id){
-  //   console.log(id)
-  //   this.stateService.deleteState(id).subscribe(data => {
-  //     this.userState=data;
-  //     this.getUserStates()
-  //   })
-  // }
 
 
   closeDialog(){
@@ -208,7 +165,7 @@ export class UpdateStateDialog {
   public updateForm: FormGroup
 
 
-  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private stateService: StateService) { }
+  constructor(public http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public stateService: StateService) { }
 
   public ngOnInit() {
     this.setToken()
@@ -225,14 +182,6 @@ export class UpdateStateDialog {
     return this.updateForm.controls[controlName].hasError(errorName);
   }
 
-  // getState(id){
-  //   this.stateService.getState(id).subscribe(data => {
-  //     this.userStates=data;
-  //     this.getUserStates()
-  //     console.log(this.userStates);
-  //   })
-  // }
-
 
   getUserStates(){
     this.stateService.getUserStates().subscribe(data => {
@@ -246,7 +195,7 @@ export class UpdateStateDialog {
     this.token=token
   }
 
-  onSubmitUpdate(){
+  onSubmitUpdate(form){
     console.log(this.updateForm.value)
     this.stateService.updateState(this.updateForm.value).subscribe(data => {
       this.userStates=data
@@ -254,9 +203,6 @@ export class UpdateStateDialog {
     })
     this.closeDialog()
   }
-
-
-
 
   closeDialog(){
     const dialogRef = this.dialog.closeAll();

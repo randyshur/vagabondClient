@@ -6,6 +6,7 @@
 
             <mat-form-field style="width:450px !important">
                 Title:
+
                 <input matInput id="title" type="text" formControlName="title" value={{this.landmarkService.userLandmark.title}}  >
                 <mat-error *ngIf="hasError('state', 'required')">Title is required.</mat-error>
             </mat-form-field>
@@ -17,6 +18,7 @@
             </mat-form-field>
             <br>
             <mat-form-field style="width:450px !important">
+
                 Image URL:
                 <input matInput id="imageURL" type="text" formControlName="imageURL" value={{this.landmarkService.userLandmark.imageURL}}>
             </mat-form-field>
@@ -49,8 +51,8 @@
             </mat-form-field>
             <br>
             <mat-dialog-actions>
-                <button mat-button type="submit" [disabled]="!updateForm.valid">Submit</button>
-                <button mat-button mat-dialog-close>Close</button>
+                <button mat-raised-button id="orange" type="submit" [disabled]="!updateForm.valid">Submit</button>
+                <button mat-raised-button id="orange" mat-dialog-close>Close</button>
             </mat-dialog-actions>
 
         </form>

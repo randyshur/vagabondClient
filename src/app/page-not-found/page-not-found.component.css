@@ -1,0 +1,29 @@
+
+
+.body{
+  background-image: url('../../assets/deadend.jpg') !important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100vh;
+  overflow-y: hidden;
+  margin-top: 3em;
+}
+
+
+#jumbo{
+  background-color: transparent;
+}
+
+#quote{
+  font-family: 'Barlow Condensed', sans-serif;
+  color:black;
+  text-align: center;
+  font-size: 40px;
+  margin: 0 auto;
+  margin-top: 5em;
+  background:rgba(255, 255, 255, 0.658);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.842);
+  width: 50%;
+  border-radius: 10px;
+}
