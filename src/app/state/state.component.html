@@ -8,19 +8,24 @@
 
 <br>
 <br>
-<div class="cardDiv">
-<mat-card *ngFor="let state of userStates">
-<mat-card-header>
-  <mat-card-title class="text-center"><h2 class="stateTitle">{{state.state}}</h2> </mat-card-title>
-</mat-card-header>
-    <mat-card-content>
-      <p class="stateDate">{{state.dateLastVisited | date}}</p>
-      <p class="stateComments">{{state.comments}}</p>
-    </mat-card-content>
-
-    <mat-card-actions id="updateDeleteButton">
+  <div class="cardDiv">
+    <mat-card *ngFor="let state of userStates">
+    <mat-card-header>
+      <mat-card-title class="text-center"><h2 class="stateTitle">{{state.state}}</h2> </mat-card-title>
+    </mat-card-header>
+      <mat-card-content>
+        <p class="stateDate">{{state.dateLastVisited | date}}</p>
+        <p class="stateComments">{{state.comments}}</p>
+      </mat-card-content>
+       <mat-card-actions id="updateDeleteButton">
       <button mat-raised-button (click)="openUpdateStateDialog(state.id)">Update State</button>
       <button mat-raised-button  (click)="deleteState(state.id)">Delete State</button>
     </mat-card-actions>
-  </mat-card>
+    </mat-card>
+  </div>
+      <div class="phantomDiv">
+        <p>pppppppppppppppppppppppppppppppppppppppppppppppp</p>
+        <p>HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</p>
+      </div>
 </div>
+
