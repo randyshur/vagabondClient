@@ -6,19 +6,24 @@
 <button id="createButton" mat-button (click)="openCreateStateDialog()" class="createStateButton">Add A State</button>
 <br>
 <br>
-<div class="cardDiv">
-<mat-card *ngFor="let state of userStates">
-<mat-card-header>
-  <mat-card-title class="text-center"><h2 class="stateTitle">{{state.state}}</h2> </mat-card-title>
-</mat-card-header>
-    <mat-card-content>
-      <p class="stateDate">{{state.dateLastVisited | date}}</p>
-      <p class="stateComments">{{state.comments}}</p>
-    </mat-card-content>
+  <div class="cardDiv">
+    <mat-card *ngFor="let state of userStates">
+    <mat-card-header>
+      <mat-card-title class="text-center"><h2 class="stateTitle">{{state.state}}</h2> </mat-card-title>
+    </mat-card-header>
+      <mat-card-content>
+        <p class="stateDate">{{state.dateLastVisited | date}}</p>
+        <p class="stateComments">{{state.comments}}</p>
+      </mat-card-content>
 
-    <mat-card-actions id="updateDeleteButton">
-      <button mat-button (click)="openUpdateStateDialog(state.id)">Update State</button>
-      <button mat-button  (click)="deleteState(state.id)">Delete State</button>
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-actions id="updateDeleteButton">
+        <button mat-button (click)="openUpdateStateDialog(state.id)">Update State</button>
+        <button mat-button  (click)="deleteState(state.id)">Delete State</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+      <div class="phantomDiv">
+        <p>pppppppppppppppppppppppppppppppppppppppppppppppp</p>
+        <p>HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</p>
+      </div>
 </div>

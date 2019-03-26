@@ -19,14 +19,15 @@ button{
     margin-top: 2em;
 }
 
-.body{
+ .body{
     background-image: url('../../assets/ben_punja.jpg') !important;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    height: auto;
+    background-position: center;
     overflow-y: hidden;
     margin-top: 5em;
+    height: auto;
 }
 
 
@@ -54,17 +55,16 @@ mat-card {
     text-align: left;
     float: left;
     width: 15em;
-    height: 25em;
+    height: 15em;
     margin: 5em;
     padding: 2.1em;
-    box-shadow: 1em 1em 1em rgb(16, 65, 16);
     background-color: white;
 }
 
 
-.container {
+/* .container {
     height: 500px !important;
-  }
+  } */
 
 
 h1 {
@@ -75,11 +75,13 @@ h1 {
     text-align: center;
     width: 200px;
     padding-bottom: 5px;
+    font-family: 'dolce_vitaquite_regular';
 }
 
 .stateDate {
     font-size: 30px;
     text-align: center;
+
 }
 
 .stateComments {
@@ -92,3 +94,15 @@ h1 {
     float: center;
 }
 
+
+
+html {
+    height: 100%;
+}
+
+.phantomDiv {
+    font-size: 100px;
+    color: white;
+    z-index: -4;
+    visibility: hidden;
+}
