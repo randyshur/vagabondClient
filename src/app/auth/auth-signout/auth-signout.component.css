@@ -1,5 +1,5 @@
 .body{
-  background-image: url('../../../assets/umbrella.jpg') !important;
+  background-image: url('../../../assets/forrest-cavale-1739-unsplash.jpg') !important;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -15,9 +15,13 @@
 
 #quote{
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 20px;
-  color:white;
+  color:black;
   text-align: center;
   font-size: 40px;
-  background: rgb(38, 124, 38);
+  margin: 0 auto;
+  margin-top: 5em;
+  background:rgba(255, 255, 255, 0.658);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.842);
+  width: 50%;
+  border-radius: 10px;
 }

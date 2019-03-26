@@ -5,8 +5,9 @@
 
 .landmarkImg{
     height: 80%;
-    width:auto;
+    width:95%;
     border-radius: 10px;
+    margin-left: .5em;
 }
 
 button{
@@ -51,6 +52,7 @@ button{
 
 #center{
     text-align: center;
-    margin-bottom: 5em;
+   
 }
+
 

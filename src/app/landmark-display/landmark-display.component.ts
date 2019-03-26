@@ -56,7 +56,7 @@ export class LandmarkDisplayComponent implements OnInit {
   openCreateDialog() {
     const dialogRef=this.dialog.open(CreateDialog,
       {
-        height: '600px',
+        height: '750px',
         width: '510px',
       });
     dialogRef.afterClosed().subscribe(results=> {
@@ -75,7 +75,7 @@ export class LandmarkDisplayComponent implements OnInit {
     dialogConfig.data = this.landmarkService.userLandmark
 
     const dialogRef=this.dialog.open(UpdateDialog, {
-      height: '600px',
+      height: '750px',
       width: '510px',
     })
     dialogRef.afterClosed().subscribe(results=> {

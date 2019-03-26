@@ -12,11 +12,11 @@
 </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list cols="8" id="list"  *ngFor="let landmark of landmarks" rowHeight="30em">
+<mat-grid-list cols="8" id="list"  *ngFor="let landmark of landmarks" rowHeight="35em">
   
-    <mat-grid-tile-header rowspan="1">
+    <!-- <mat-grid-tile-header rowspan="1">
         <h2 class="titleFont" id="center">{{landmark.title}}</h2>
-      </mat-grid-tile-header>
+      </mat-grid-tile-header> -->
 
   <mat-grid-tile  colspan='5' >
 
@@ -25,7 +25,9 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan='3' id="desc">
-
+    
+     <div>     
+    <h2 class="titleFont" id="center">{{landmark.title}}</h2><br>
     <p class="bodyFont">Location:{{landmark.address}}<br>{{landmark.city}}, {{landmark.state.state}}
     <br>
     {{landmark.comments}}
@@ -34,6 +36,7 @@
     <br>
     User: {{landmark.state.user.username}}
     </p>
+  </div>
   </mat-grid-tile>
 
 
