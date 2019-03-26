@@ -34,11 +34,9 @@ button{
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    /* height:100vh; */
     overflow-y: hidden;
     margin-top: 5em;
-    /* margin: 0; */
-    height: 100vh;
+
 }
 
 mat-grid-list{
@@ -69,8 +67,9 @@ mat-grid-list{
 
 body{
     margin: 0;
-    height: 100vh;
-    background-size:cover;
+    /* height: 100vh; */
+    /* background-size:cover; */
+    overflow: scroll;
 }
 
 .phantomDiv{
