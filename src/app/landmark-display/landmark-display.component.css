@@ -1,7 +1,7 @@
 
 .landmarkImg{
-    height: 100%;
-    width: 85%;
+    height: auto;
+    width: 100%;
     margin-left: 2em;
 
 }
@@ -36,9 +36,11 @@ button{
 
 mat-grid-list{
     background-color: white;
-    margin: 8em;
+    margin: 8em auto;
     padding: .5em;
     border-radius: 10px;
+    width: 70%;
+    
 }
 
 
