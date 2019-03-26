@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { LandmarkService } from '../services/landmark.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';

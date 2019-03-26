@@ -86,12 +86,7 @@ h1 {
     overflow-wrap: break-word;
 }
 
-/* /deep/ .mat-dialog-content {
-    overflow-y: hidden !important;
-} */
-
 /deep/ #orange{
     background-color: #EDAB65;
 }
 
-div.container { max-height: 100% !important; }
