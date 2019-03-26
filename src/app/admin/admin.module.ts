@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
-import { AdminStatesComponent } from './admin-states/admin-states.component';
-import { AdminLandmarksComponent, ALCreateDialog, UpdateDialog } from './admin-landmarks/admin-landmarks.component';
+import { AdminStatesComponent, UpdateStateDialog } from './admin-states/admin-states.component';
+import { AdminLandmarksComponent, UpdateDialog } from './admin-landmarks/admin-landmarks.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -41,11 +41,12 @@ import { AdminRoutingModule } from './admin-routing.module';
     AdminUsersComponent,
     AdminStatesComponent,
     AdminLandmarksComponent,
-    ALCreateDialog,
-    UpdateDialog
+    UpdateDialog,
+    UpdateStateDialog
   ],
   entryComponents: [
-    UpdateDialog
+    UpdateDialog,
+    UpdateStateDialog
   ],
 })
 export class AdminModule { }
