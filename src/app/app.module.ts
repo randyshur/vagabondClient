@@ -55,7 +55,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   exports: [
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule
   ],
   imports: [
 

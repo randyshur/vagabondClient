@@ -7,21 +7,21 @@ import { AdminUsersComponent }    from './admin-users/admin-users.component';
 import { AdminStatesComponent }    from './admin-states/admin-states.component';
 import { AdminLandmarksComponent }    from './admin-landmarks/admin-landmarks.component';
 
-import { AuthGuard }                from '../auth/auth.guard';
+import { AdminGuard }                from './admin.guard';
 
 const adminRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     children: [
       {
         path: '',
-        canActivateChild: [AuthGuard],
+        canActivateChild: [AdminGuard],
         children: [
-          { path: 'users', component: AdminUsersComponent },
-          { path: 'states', component: AdminStatesComponent },
-          { path: 'landmarks', component: AdminLandmarksComponent },
+          { path: 'adminusers', component: AdminUsersComponent },
+          { path: 'adminstates', component: AdminStatesComponent },
+          { path: 'adminlandmarks', component: AdminLandmarksComponent },
           { path: '', component: AdminDashboardComponent }
         ]
       }

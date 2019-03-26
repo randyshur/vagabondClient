@@ -1,6 +1,6 @@
 <div class="container">
 <h1 mat-dialog-title>Create State</h1>
-<mat-dialog-content>
+<mat-dialog-content >
     <div class="formGroup">
         <form [formGroup]="stateForm" novalidate  (ngSubmit)="onSubmit(stateForm.value)">
         
@@ -9,22 +9,22 @@
                 <input matInput id="state" type="text" formControlName="state">
                 <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
             </mat-form-field >
-
+            <br>
             <mat-form-field style="width:350px !important">
                 Date Last Visited:
                 <input matInput id="date" type="date" formControlName="dateLastVisited" required>
                 
             </mat-form-field >
-
+            <br>
             <mat-form-field style="width:350px !important">
                 Comments:
                 <input matInput id="comments" type="text" formControlName="comments">
             </mat-form-field >
-
+            <br>
 
             <mat-dialog-actions>
-                <button mat-button type="submit" [disabled]="!stateForm.valid">Submit</button>
-                <button mat-button mat-dialog-close>Close</button>
+                <button mat-raised-button id="orange" type="submit" [disabled]="!stateForm.valid">Submit</button>
+                <button mat-raised-button id="orange" mat-dialog-close>Close</button>
             </mat-dialog-actions>
 
         </form>
