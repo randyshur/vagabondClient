@@ -32,15 +32,15 @@ export class AuthSignupComponent implements OnInit {
   // initiate component
   public ngOnInit() {
     this.signUpForm = new FormGroup({
-      username:  new FormControl('', [Validators.required]),
-      password:  new FormControl('', [Validators.required, Validators.minLength(6)]),
-      email:  new FormControl('', [ Validators.required,  Validators.email]),
-      firstName:  new FormControl(''),
-      lastName:  new FormControl(''),
-      address:  new FormControl(''),
-      city:  new FormControl('',),
-      state:  new FormControl(''),
-      zip:  new FormControl(''),
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      address: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zip: new FormControl(''),
     })
   }
 
@@ -58,7 +58,7 @@ export class AuthSignupComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.signUpForm.invalid) {
-        return;
+      return;
     }
 
     this.loading = true;
@@ -66,28 +66,26 @@ export class AuthSignupComponent implements OnInit {
     this.newUser = this.signUpForm.value
 
     this.endpointsService.signup(this.newUser)
-        .pipe(first())
-        .subscribe(
-            data => {
-                console.log(data)
-                this.alertService.success('SignUp successful', true);
-                this.newUser=data['sessionToken']
-                console.log(this.newUser);
-                localStorage.setItem('token', data['sessionToken']);
-                localStorage.setItem('admin', data['user'].admin);
-                localStorage.setItem('id', data['user'].id);
-                this.loading = false;
-                this.snackbar.open('Succesfully submitted a valid form. yay!', 'Close', {
-                  duration: 3000,
-                });
-                this.router.navigate(['/home']);
-
-
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            })
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data)
+          this.alertService.success('SignUp successful', true);
+          this.newUser = data['sessionToken']
+          console.log(this.newUser);
+          localStorage.setItem('token', data['sessionToken']);
+          localStorage.setItem('admin', data['user'].admin);
+          localStorage.setItem('id', data['user'].id);
+          this.loading = false;
+          this.snackbar.open('Succesfully submitted a valid form. yay!', 'Close', {
+            duration: 3000,
+          });
+          this.router.navigate(['/home']);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        })
 
   }
 

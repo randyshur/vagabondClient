@@ -11,6 +11,8 @@ export class AuthSignoutComponent implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem('token');
+    localStorage.removeItem('admin');
+    localStorage.removeItem('id');
   }
 
 }

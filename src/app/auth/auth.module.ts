@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { LoginComponent }    from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthSigninComponent } from './auth-signin/auth-signin.component';
 import { AuthSignupComponent } from './auth-signup/auth-signup.component';
@@ -17,7 +16,6 @@ import { AuthSignoutComponent } from './auth-signout/auth-signout.component';
   imports:      [ BrowserModule, BrowserAnimationsModule, ReactiveFormsModule,
     MatCardModule, MatInputModule, MatButtonModule, MatSnackBarModule, AuthRoutingModule ],
   declarations: [
-    LoginComponent,
     AuthSigninComponent,
     AuthSignupComponent,
     AuthSignoutComponent
