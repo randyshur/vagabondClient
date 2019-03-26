@@ -1,17 +1,23 @@
 <mat-toolbar class="nav" color="warn">
 
-  <span class="example-fill-remaining-space navTitle">Vagabond </span>
+  <span class="example-fill-remaining-space navTitle">Vagabond {{(this.getValidToken() === true)}}</span>
 
   <span>
     <a routerLink="/home"><button mat-button class="navButton">Home</button></a>
 
-    <a routerLink="/state" *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">States</button></a>
-    <a routerLink="/landmark" *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">Landmarks</button></a>
-    <a routerLink="/admin" *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">Admin</button></a>
+    <a routerLink="/state" *ngIf="(this.getValidToken() === true) && !(this.getValidAdminToken() === 'true')"><button mat-button class="navButton">States</button></a>
+    <a routerLink="/landmark" *ngIf="(this.getValidToken() === true) && !(this.getValidAdminToken() === 'true')"><button mat-button class="navButton">Landmarks</button></a>
 
-    <a routerLink="/authsignin" *ngIf="this.isTokenExpired()"><button mat-button class="navButton">SignIn</button></a>
-    <a routerLink="/authsignup" *ngIf="this.isTokenExpired()"><button mat-button class="navButton">SignUp</button></a>
-    <a routerLink="/authsignout"  *ngIf="!this.isTokenExpired()"><button mat-button class="navButton">SignOut</button></a>
+    <a routerLink="/admin" *ngIf="this.getValidAdminToken() === 'true'"><button mat-button class="navButton">Admin</button></a>
+    <a routerLink="/admin/adminusers" *ngIf="this.getValidAdminToken() === 'true'"><button mat-button class="navButton">Users</button></a>
+    <a routerLink="/admin/adminstates" *ngIf="this.getValidAdminToken() === 'true'"><button mat-button
+        class="navButton">AStates</button></a>
+    <a routerLink="/admin/adminlandmarks" *ngIf="this.getValidAdminToken() === 'true'"><button mat-button
+        class="navButton">ALandmarks</button></a>
+
+    <a routerLink="/authsignin"  *ngIf="!(this.getValidToken() === true) && !(this.getValidAdminToken() === 'true')"><button mat-button class="navButton">SignIn</button></a>
+    <a routerLink="/authsignup"  *ngIf="!(this.getValidToken() === true) && !(this.getValidAdminToken() === 'true')"><button mat-button class="navButton">SignUp</button></a>
+    <a routerLink="/authsignout" *ngIf="(this.getValidToken() === true) ||  (this.getValidAdminToken() === 'true')"><button mat-button class="navButton">SignOut</button></a>
 
   </span>
 </mat-toolbar>
