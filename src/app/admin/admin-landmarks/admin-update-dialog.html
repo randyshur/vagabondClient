@@ -1,0 +1,62 @@
+<div class="container">
+<h1 mat-dialog-title>Update Landmark</h1>
+<mat-dialog-content>
+    <div class="formGroup" >
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate()" *ngIf="this.landmarkService.userLandmark">
+
+            <mat-form-field style="width:450px !important">
+                Title:
+
+                <input matInput id="title" type="text" formControlName="title" value={{this.landmarkService.userLandmark.title}}  >
+                <mat-error *ngIf="hasError('state', 'required')">Title is required.</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:450px !important">
+                Date Last Visited:
+                <input matInput id="date" type="date" formControlName="dateLastVisited" value={{this.landmarkService.userLandmark.dateLastVisited}} >
+                <mat-error *ngIf="hasError('state', 'required')">Tell us when you were there.</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:450px !important">
+
+                Image URL:
+                <input matInput id="imageURL" type="text" formControlName="imageURL" value={{this.landmarkService.userLandmark.imageURL}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:450px !important">
+                Comments:
+                <input matInput id="comments" type="text" formControlName="comments" value={{this.landmarkService.userLandmark.comments}}>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field style="width:450px !important">
+                Address:
+                <input matInput id="address" type="text" formControlName="address" value={{this.landmarkService.userLandmark.address}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:450px !important">
+                City:
+                <input matInput id="city" type="text" formControlName="city" value={{this.landmarkService.userLandmark.city}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:450px !important">
+                Zip:
+                <input matInput id="zip" type="text" formControlName="zip" value={{this.landmarkService.userLandmark.zip}}>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:450px !important">
+                State:
+                <input matInput id="state" type="text" formControlName="state" value={{this.landmarkService.userLandmark.state.state}}>
+                <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-dialog-actions>
+                <button mat-button type="submit" [disabled]="!updateForm.valid">Submit</button>
+                <button mat-button mat-dialog-close>Close</button>
+            </mat-dialog-actions>
+
+        </form>
+    </div>
+
+</mat-dialog-content>
+</div>
