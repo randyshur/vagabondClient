@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
-import { LandmarkService } from '../../services/landmark.service';
+import { LandmarkService } from './admin-landmarks.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
@@ -40,7 +40,7 @@ export class AdminLandmarksComponent implements OnInit {
     }
 
     getAll() {
-      this.landmarkService.getUserLandmarks().subscribe(data => {
+      this.landmarkService.getLandmarks().subscribe(data => {
         console.log(data)
         this.userLandmarks = data
       }
@@ -69,13 +69,13 @@ export class AdminLandmarksComponent implements OnInit {
     }
 
     openUpdateDialog(id) {
-      this.landmarkService.getUserLandmark(id)
+      this.landmarkService.getLandmark(id)
       console.log(this.landmarkService.userLandmark)
 
       const dialogConfig = new MatDialogConfig();
       dialogConfig.data = this.landmarkService.userLandmark
 
-      const dialogRef=this.dialog.open(ALUpdateDialog, {
+      const dialogRef=this.dialog.open(UpdateDialog, {
         height: '600px',
         width: '510px',
       })
@@ -127,7 +127,7 @@ export class AdminLandmarksComponent implements OnInit {
     }
 
     getAll() {
-      this.landmarkService.getUserLandmarks().subscribe(data => {
+      this.landmarkService.getLandmarks().subscribe(data => {
         console.log(data)
         this.userLandmarks = data
       }
@@ -143,12 +143,12 @@ export class AdminLandmarksComponent implements OnInit {
     onSubmit() {
 
       console.log(this.landmarkForm.value)
-
+/*
       this.landmarkService.createLandmark(this.landmarkForm.value).subscribe(data => {
         console.log(data)
         // this.itemCreated.emit(data)
       })
-
+*/
       this.getAll()
       this.dialog.closeAll();
     }
@@ -160,7 +160,7 @@ export class AdminLandmarksComponent implements OnInit {
     selector: 'admin-update-dialog',
     templateUrl: 'admin-update-dialog.html',
   })
-  export class ALUpdateDialog {
+  export class UpdateDialog {
 
     userLandmarks: any
     userLandmark: any

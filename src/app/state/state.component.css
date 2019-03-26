@@ -83,7 +83,7 @@ h1 {
 .stateComments {
     text-align: center;
     font-size: 20px;
-    overflow-wrap: normal;
+    overflow-wrap: break-word;
 }
 
 /* /deep/ .mat-dialog-content {

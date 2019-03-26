@@ -1,10 +1,4 @@
-
 <div class="body">
-  <div *ngIf="!this.userLandmarks" class="bodyFont" id="msg"><h1>You don't have any landmarks.
-    <br>
-    Would you like to create one?</h1></div>
-
-  <button mat-button (click)="openCreateDialog()" id="createButton">Create New Landmark</button>
   <br>
   <br>
   <mat-grid-list cols="4" *ngFor="let userLandmark of userLandmarks">
