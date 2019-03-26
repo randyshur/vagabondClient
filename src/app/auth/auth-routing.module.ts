@@ -6,14 +6,11 @@ import { AuthService } from './auth.service';
 import { AuthSignupComponent } from './auth-signup/auth-signup.component';
 import { AuthSigninComponent } from './auth-signin/auth-signin.component';
 import { AuthSignoutComponent } from './auth-signout/auth-signout.component';
-import { LoginComponent } from './login/login.component';
-
 
 const authRoutes: Routes = [
   { path: 'authsignup', component: AuthSignupComponent },
   { path: 'authsignin', component: AuthSigninComponent },
-  { path: 'authsignout', component: AuthSignoutComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'authsignout', component: AuthSignoutComponent }
 ];
 
 @NgModule({

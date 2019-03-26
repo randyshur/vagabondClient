@@ -1,5 +1,23 @@
 .body{
-  height:100%;
+  background-image: url('../../../assets/umbrella.jpg') !important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100vh;
   overflow-y: hidden;
-  margin-top: 5em;
+  margin-top: 3em;
+}
+
+
+#jumbo{
+  background-color: transparent;
+}
+
+#quote{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  color:white;
+  text-align: center;
+  font-size: 40px;
+  background: rgb(38, 124, 38);
 }
