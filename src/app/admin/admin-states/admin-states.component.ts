@@ -26,7 +26,7 @@ export class AdminStatesComponent implements OnInit {
   stateid: number
   token: any
 
-  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) {}
+  constructor(public stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) {}
 
 
 
@@ -126,7 +126,7 @@ export class CreateStateDialog {
   stateForm: FormGroup
 
 
-  constructor(private stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
+  constructor(public stateService: StateService, private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder) { }
 
 
  ngOnInit() {
@@ -157,7 +157,7 @@ export class CreateStateDialog {
     })
   }
 
-  onSubmit(){
+  onSubmit(form){
     console.log(this.stateForm.value)
    this.stateService.createState(this.stateForm.value).subscribe(data => {
      this.userStates=data;
@@ -204,7 +204,7 @@ export class UpdateStateDialog {
   public updateForm: FormGroup
 
 
-  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private stateService: StateService) { }
+  constructor(private http:HttpClientModule, public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public stateService: StateService) { }
 
   public ngOnInit() {
     this.setToken()
@@ -242,7 +242,7 @@ export class UpdateStateDialog {
     this.token=token
   }
 
-  onSubmitUpdate(){
+  onSubmitUpdate(form){
     console.log(this.updateForm.value)
     this.stateService.updateState(this.updateForm.value).subscribe(data => {
       this.userStates=data
