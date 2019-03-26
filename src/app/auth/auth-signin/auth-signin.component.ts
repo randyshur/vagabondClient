@@ -49,7 +49,7 @@ export class AuthSigninComponent implements OnInit {
 
   get f() { return this.signInForm.controls; }
 
-  public signIn() {
+  public signIn(form) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -62,7 +62,7 @@ export class AuthSigninComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
-                console.log(data['user'])
+                //console.log(data['user'])
                 localStorage.setItem('token', data['sessionToken']);
                 localStorage.setItem('admin', data['user'].admin);
                 localStorage.setItem('id', data['user'].id);
