@@ -76,3 +76,7 @@ body{
     z-index: -4;
     visibility: hidden;
 }
+
+#text-center{
+    text-align: center;
+}
