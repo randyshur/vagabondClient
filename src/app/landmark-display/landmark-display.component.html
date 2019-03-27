@@ -7,7 +7,7 @@
 <button mat-raised-button (click)="openCreateDialog()" id="createButton">Add a Landmark</button>
 <br>
 <br>
-<mat-grid-list rowHeight="25em" cols="4" *ngFor="let userLandmark of userLandmarks">
+<mat-grid-list rowHeight="25em" cols="5" *ngFor="let userLandmark of userLandmarks">
 
   <!-- <mat-grid-tile-header rowspan="1" class="text-center">
     <h2 class="titleFont" >{{userLandmark.title}}</h2>
@@ -17,7 +17,7 @@
     <img id="landmarkImg" src={{userLandmark.imageURL}} />
   </mat-grid-tile>
 
-  <mat-grid-tile colspan="1" >
+  <mat-grid-tile colspan="2" >
     <div>
       <h2 class="titleFont" >{{userLandmark.title}}</h2>
       <p id="content">
